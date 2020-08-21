@@ -145,7 +145,14 @@ export default {
     }
   },
   mounted () {
+    if (this.$route.query) {
+      this.$router.push({
+        path: this.$route.path,
+        query: { page: 1 }
+      })
+    }
     this.currentPage = parseInt(this.$route.query.page)
+    console.log(this.$route.query)
   }
 }
 </script>
