@@ -1,0 +1,38 @@
+@charset "UTF-8";
+:root {
+  /* 主題色 */
+  --darkGreen:#60827B !important;
+  --green:#84A295 !important;
+  --lightGreen:#B7CDC2 !important;
+  --yellow:#EFDB96 !important;
+  --beige:#EAE6DA !important;
+  --creamyWhite:#F7F6EE !important;
+  /* 黑色透明 */
+  /* 白色透明 */
+  /* 陰影 */
+  /* 內距、外距級數 */
+}
+
+@media (min-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1140px;
+  }
+}
