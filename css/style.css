@@ -1,16 +1,96 @@
 @charset "UTF-8";
-:root {
-  /* 主題色 */
-  --darkGreen:#60827B !important;
-  --green:#84A295 !important;
-  --lightGreen:#B7CDC2 !important;
-  --yellow:#EFDB96 !important;
-  --beige:#EAE6DA !important;
-  --creamyWhite:#F7F6EE !important;
-  /* 黑色透明 */
-  /* 白色透明 */
-  /* 陰影 */
-  /* 內距、外距級數 */
+/* 主題色 */
+/* 黑色透明 */
+/* 白色透明 */
+/* 陰影 */
+/* 內距、外距級數 */
+#lists {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+#list {
+  max-width: 100%;
+  -ms-flex-preferred-size: 100%;
+      flex-basis: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#button-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#button-group .dotWrap {
+  color: #60827B !important;
+  margin-left: 10px;
+  letter-spacing: 2px;
+}
+
+.btn {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  background: #B7CDC2 !important;
+  border-radius: 100%;
+  margin-left: 1%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 30px;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.btn:active {
+  background: #60827B !important;
+}
+
+.btn:hover {
+  background-color: #84A295 !important;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.btn .numWrap {
+  width: auto;
+  height: 30px;
+  line-height: 30px;
+  font-size: 16px;
+  color: white;
+}
+
+.active {
+  background-color: #60827B !important;
+  color: white;
 }
 
 @media (min-width: 576px) {
@@ -36,3 +116,4 @@
     max-width: 1140px;
   }
 }
+/*# sourceMappingURL=style.css.map */
