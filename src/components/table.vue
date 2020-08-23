@@ -23,8 +23,7 @@ export default {
   },
   computed: {
     tableTh () {
-      var tableTh = Object.keys(this.data[0])
-      // console.log(tableTh)
+      const tableTh = []
       for (const data of this.data) {
         var key = Object.keys(data)
         for (let i = 0; i < key.length; i++) {
@@ -33,14 +32,10 @@ export default {
           }
         }
       }
-      // console.log(tableTh)
       return tableTh
     }
   },
   mounted () {
-    setTimeout(() => {
-      console.log(this.tableTh)
-    }, 500)
   }
 }
 </script>
