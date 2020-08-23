@@ -1,8 +1,7 @@
 <template lang="pug">
   #app
-    m-pagination(:lists="boxs" :numberPerPage="5" scrollTop)
-      template(v-slot:pagelist="anythingyouwant")
-        h1 {{ anythingyouwant }}
+    m-table(:data="boxs")
+      m-th
 </template>
 
 <script>
@@ -13,9 +12,12 @@ export default {
     }
   },
   mounted () {
-    for (let i = 1; i <= 50; i++) {
-      this.boxs.push({ name: i, id: Math.random() })
+    for (let i = 1; i <= 5; i++) {
+      const rand = Math.random() > 0.5 ? 'male' : 'female'
+      this.boxs.push({ name: i, id: Math.random(), gender: rand })
     }
+    this.boxs.push({ name: 6, id: Math.random(), a: 'asd', gender: 'no' })
+    this.boxs.push({ name: 7, id: Math.random(), b: 'asasdd' })
   }
 }
 </script>
