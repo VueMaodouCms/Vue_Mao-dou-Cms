@@ -12,9 +12,6 @@ Vue.config.productionTip = false
 Vue.component('m-pagination', pagination)
 // Vue.component('m-darkPagination', darkPagination)
 Vue.component('m-table', table)
-Vue.component('m-th', table)
-Vue.component('m-tr', table)
-Vue.component('m-td', table)
 
 new Vue({
   router,
