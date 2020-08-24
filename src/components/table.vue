@@ -15,31 +15,63 @@
 <script>
 export default {
   props: {
-    data: Array
+    data: Array,
+    title: Array
   },
   data () {
     return {
+      tableTitle: [],
+      toggle: true
     }
   },
   computed: {
     tableTh () {
       var tableTh = []
       for (const data of this.data) {
-        var key = Object.keys(data)
-        for (let i = 0; i < key.length; i++) {
-          if (!tableTh.includes(key[i])) {
-            tableTh.push(key[i])
+        var keyOriginal = Object.keys(data)
+        var keyReplace = Object.keys(data)
+        if (this.title.length > 0) {
+          this.title.map(title => {
+            for (let i = 0; i < keyReplace.length; i++) {
+              if (keyReplace[i].includes(title.original)) {
+                keyReplace[i] = title.replace
+              }
+            }
+          })
+        }
+        for (let i = 0; i < keyReplace.length; i++) {
+          if (!tableThReplace.includes(keyReplace[i])) {
+            tableThReplace.push(
+              keyReplace[i]
+            )
+          }
+        }
+        for (let i = 0; i < keyOriginal.length; i++) {
+          if (!tableThOriginal.includes(keyOriginal[i])) {
+            tableThOriginal.push(
+              keyOriginal[i]
+            )
           }
         }
       }
-      // console.log(tableTh)
-      return tableTh
+      return [tableThReplace, tableThOriginal]
+    }
+  },
+  methods: {
+    sort (index, tableTh, toggle) {
+      console.log(toggle)
+      this.data.sort(function (a, b) {
+        const key = tableTh[1][index]
+        if (toggle) {
+          return a[key] - b[key]
+        } else {
+          return b[key] - a[key]
+        }
+      })
     }
   },
   mounted () {
-    setTimeout(() => {
-      console.log(this.tableTh)
-    }, 500)
+
   }
 }
 </script>

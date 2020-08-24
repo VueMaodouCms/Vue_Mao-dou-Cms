@@ -6,7 +6,19 @@
 export default {
   data () {
     return {
-      boxs: []
+      boxs: [],
+      title: [
+        {
+          original: 'name',
+          replace: '名字',
+          sortable: true
+        },
+        {
+          original: 'a',
+          replace: 'aaaa',
+          sortable: true
+        }
+      ]
     }
   },
   mounted () {
