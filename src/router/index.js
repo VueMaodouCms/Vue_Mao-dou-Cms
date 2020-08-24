@@ -19,6 +19,11 @@ const routes = [
     path: '/table',
     name: 'Table',
     component: () => import(/* webpackChunkName: "about" */ '../views/Table.vue')
+  },
+  {
+    path: '/button',
+    name: 'Button',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Button.vue')
   }
 ]
 
