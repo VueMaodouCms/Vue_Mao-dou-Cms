@@ -2,14 +2,12 @@
 #table
   table(border='1')
     thead
-      p Data
+      h1 Data
     tbody
       th
-        td(v-for="(th, index) in tableTh" :key="index")
-          .td {{th}}
+        td(v-for="(th, index) in tableTh" :key="index") {{th}}
       tr(v-for="(tr, index) in data" :key="index")
-        td(v-for="(td,inx) in tableTh" :key='inx')
-          .td {{tr[td]}}
+        td(v-for="(td,inx) in tableTh" :key='inx') {{tr[td]}}
 </template>
 
 <script>
