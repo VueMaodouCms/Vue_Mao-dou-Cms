@@ -1,15 +1,13 @@
 <template lang="pug">
-  #table
-    table(border='1')
-      thead
-        p Data
-      tbody
-        th
-          td(v-for="(th, index) in tableTh" :key="index")
-            .td {{th}}
-        tr(v-for="(tr, index) in data" :key="index")
-          td(v-for="(td,inx) in tableTh" :key='inx')
-            .td {{tr[td]}}
+#table
+  table(border='1')
+    thead
+      h1 Data
+    tbody
+      th
+        td(v-for="(th, index) in tableTh[0]" :key="index" @click='toggle=!toggle,sort(index,tableTh,toggle)') {{th}}
+      tr(v-for="(tr, index) in data" :key="index")
+        td(v-for="(td,inx) in tableTh[1]" :key='inx') {{tr[td]}}
 </template>
 
 <script>
@@ -26,7 +24,8 @@ export default {
   },
   computed: {
     tableTh () {
-      var tableTh = []
+      const tableThOriginal = []
+      const tableThReplace = []
       for (const data of this.data) {
         var keyOriginal = Object.keys(data)
         var keyReplace = Object.keys(data)
