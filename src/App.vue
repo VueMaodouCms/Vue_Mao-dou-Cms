@@ -1,21 +1,14 @@
 <template lang="pug">
   #app
-    m-pagination(:lists="boxs" :numberPerPage="5" scrollTop)
-      template(v-slot:pagelist="anythingyouwant")
-        h1 {{ anythingyouwant }}
+    router-link(to="/table")
+      span table |
+    router-link(to="/pagination")
+      span pagination |
+    router-link(to="/button")
+      span button
+    router-view
 </template>
 
 <script>
-export default {
-  data () {
-    return {
-      boxs: []
-    }
-  },
-  mounted () {
-    for (let i = 1; i <= 50; i++) {
-      this.boxs.push({ name: i, id: Math.random() })
-    }
-  }
-}
+
 </script>

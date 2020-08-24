@@ -164,54 +164,54 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// #lists {
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   flex-wrap: wrap;
-// }
-// #list {
-//   max-width: 100%;
-//   flex-basis: 100%;
-//   display: flex;
-//   justify-content: center;
-// }
-// #button-group {
-//   display: flex;
-//   justify-content: center;
-// }
-// .btn {
-//   box-sizing: border-box;
-//   // padding: 0 15px;
-//   cursor: pointer;
-//   user-select: none;
-//   // border: 2px solid rgba(0,0,0,0.2);
-//   background: #B7CDC2;
-//   border-radius: 100%;
-//   margin-left: 1%;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-//   width:30px;
-//   transition: 0.4s;
-//   &:active {
-//     background:#60827B;
-//   }
-//   &:hover{
-//     background-color: #84A295;
-//     transform: scale(1.2);
-//   }
-// }
-// .numWrap{
-//   width:auto;
-//   height :30px;
-//   line-height :30px;
-//   font-size: 16px;
-//   color:white;
+#lists {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+#list {
+  max-width: 100%;
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+}
+#button-group {
+  display: flex;
+  justify-content: center;
+}
+.btn {
+  box-sizing: border-box;
+  // padding: 0 15px;
+  cursor: pointer;
+  user-select: none;
+  // border: 2px solid rgba(0,0,0,0.2);
+  background: #B7CDC2;
+  border-radius: 100%;
+  margin-left: 1%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width:30px;
+  transition: 0.4s;
+  &:active {
+    background:#60827B;
+  }
+  &:hover{
+    background-color: #84A295;
+    transform: scale(1.2);
+  }
+}
+.numWrap{
+  width:auto;
+  height :30px;
+  line-height :30px;
+  font-size: 16px;
+  color:white;
 
-// }
-// .active {
-//   background-color: #60827B;
-//   color: white;
-// }
+}
+.active {
+  background-color: #60827B;
+  color: white;
+}
 </style>

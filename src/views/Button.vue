@@ -1,3 +1,4 @@
 <template lang="pug">
-  #about
+  #button
+    m-button 按鈕
 </template>
