@@ -13,12 +13,22 @@ const routes = [
   {
     path: '/pagination',
     name: 'Pagination',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Pagination.vue')
+    component: () => import(/* webpackChunkName: "pagination" */ '../views/Pagination.vue')
   },
   {
     path: '/table',
     name: 'Table',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Table.vue')
+    component: () => import(/* webpackChunkName: "table" */ '../views/Table.vue')
+  },
+  {
+    path: '/chart',
+    name: 'Chart',
+    component: () => import(/* webpackChunkName: "chart" */ '../views/Chart.vue')
+  },
+  {
+    path: '/button',
+    name: 'Button',
+    component: () => import(/* webpackChunkName: "button" */ '../views/Button.vue')
   }
 ]
 
