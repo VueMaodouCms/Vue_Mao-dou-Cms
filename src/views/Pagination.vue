@@ -1,8 +1,7 @@
 <template lang="pug">
-  #pagination
-    m-pagination(:lists="boxs" :numberPerPage="5" scrollTop)
-      template(v-slot:pagelist="anythingyouwant")
-        h1 {{ anythingyouwant }}
+  m-pagination(:lists="boxs" :numberPerPage="5" scrollTop)
+    template(v-slot:pagelist="anythingyouwant")
+      h1 {{ anythingyouwant }}
 </template>
 <script>
 export default {
