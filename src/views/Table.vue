@@ -1,13 +1,24 @@
 <template lang="pug">
-  #table
-    m-table(:data="boxs")
+  m-table(:data="boxs" :title="title")
 </template>
 
 <script>
 export default {
   data () {
     return {
-      boxs: []
+      boxs: [],
+      title: [
+        {
+          original: 'name',
+          replace: '名字',
+          sortable: true
+        },
+        {
+          original: 'a',
+          replace: 'aaaa',
+          sortable: true
+        }
+      ]
     }
   },
   mounted () {
