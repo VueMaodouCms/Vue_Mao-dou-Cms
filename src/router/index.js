@@ -18,12 +18,17 @@ const routes = [
   {
     path: '/table',
     name: 'Table',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Table.vue')
+    component: () => import(/* webpackChunkName: "table" */ '../views/Table.vue')
+  },
+  {
+    path: '/chart',
+    name: 'Chart',
+    component: () => import(/* webpackChunkName: "chart" */ '../views/Chart.vue')
   },
   {
     path: '/button',
     name: 'Button',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Button.vue')
+    component: () => import(/* webpackChunkName: "button" */ '../views/Button.vue')
   }
 ]
 
