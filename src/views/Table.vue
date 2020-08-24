@@ -1,6 +1,5 @@
 <template lang="pug">
-  #table
-    m-table(:data="boxs")
+  m-table(:data="boxs")
 </template>
 
 <script>

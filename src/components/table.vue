@@ -1,15 +1,15 @@
 <template lang="pug">
-#table
-  table(border='1')
-    thead
-      p Data
-    tbody
-      th
-        td(v-for="(th, index) in tableTh" :key="index")
-          .td {{th}}
-      tr(v-for="(tr, index) in data" :key="index")
-        td(v-for="(td,inx) in tableTh" :key='inx')
-          .td {{tr[td]}}
+  #table
+    table(border='1')
+      thead
+        p Data
+      tbody
+        th
+          td(v-for="(th, index) in tableTh" :key="index")
+            .td {{th}}
+        tr(v-for="(tr, index) in data" :key="index")
+          td(v-for="(td,inx) in tableTh" :key='inx')
+            .td {{tr[td]}}
 </template>
 
 <script>
@@ -23,8 +23,7 @@ export default {
   },
   computed: {
     tableTh () {
-      var tableTh = Object.keys(this.data[0])
-      // console.log(tableTh)
+      var tableTh = []
       for (const data of this.data) {
         var key = Object.keys(data)
         for (let i = 0; i < key.length; i++) {

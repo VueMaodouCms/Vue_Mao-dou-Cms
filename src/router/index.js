@@ -13,12 +13,17 @@ const routes = [
   {
     path: '/pagination',
     name: 'Pagination',
-    component: () => import(/* webpackChunkName: "about" */ '../views/Pagination.vue')
+    component: () => import(/* webpackChunkName: "pagination" */ '../views/Pagination.vue')
   },
   {
     path: '/table',
     name: 'Table',
     component: () => import(/* webpackChunkName: "about" */ '../views/Table.vue')
+  },
+  {
+    path: '/button',
+    name: 'Button',
+    component: () => import(/* webpackChunkName: "about" */ '../views/Button.vue')
   }
 ]
 
