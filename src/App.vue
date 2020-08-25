@@ -5,7 +5,9 @@
     router-link(to="/pagination")
       span pagination |
     router-link(to="/button")
-      span button
+      span button |
+    router-link(to="/chart")
+      span chart
     router-view
 </template>
 

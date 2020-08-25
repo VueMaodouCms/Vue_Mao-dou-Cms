@@ -6,6 +6,7 @@ import pagination from './components/pagination.vue'
 // import darkPagination from './components/dark-pagination.vue'
 import table from './components/table.vue'
 import button from './components/button.vue'
+import chart from './components/chart.vue'
 import '../css/style.css'
 
 Vue.config.productionTip = false
@@ -14,6 +15,7 @@ Vue.component('m-pagination', pagination)
 // Vue.component('m-darkPagination', darkPagination)
 Vue.component('m-table', table)
 Vue.component('m-button', button)
+Vue.component('m-chart', chart)
 
 new Vue({
   router,
