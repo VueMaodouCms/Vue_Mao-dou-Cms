@@ -1,5 +1,5 @@
 <template lang="pug">
-  m-pagination(:lists="boxs" :numberPerPage="5" scrollTop)
+  m-pagination(:lists="boxs" :numberPerPage="10" scrollTop)
     template(v-slot:pagelist="anythingyouwant")
       h1 {{ anythingyouwant }}
 </template>
@@ -11,7 +11,7 @@ export default {
     }
   },
   mounted () {
-    for (let i = 1; i <= 50; i++) {
+    for (let i = 1; i <= 24; i++) {
       this.boxs.push({ name: i, id: Math.random() })
     }
   }
