@@ -1,6 +1,6 @@
 <template lang="pug">
 //- 元件ID
-#pagenation
+#pagination
   //- 傳進來陣列
   #lists
     //- 傳進來陣列裡面的值
