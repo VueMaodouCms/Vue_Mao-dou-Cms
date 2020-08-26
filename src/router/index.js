@@ -16,6 +16,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "pagination" */ '../views/Pagination.vue')
   },
   {
+    path: '/darkpagination',
+    name: 'DarkPagination',
+    component: () => import(/* webpackChunkName: "dark-pagination" */ '../views/DarkPagination.vue')
+  },
+  {
     path: '/table',
     name: 'Table',
     component: () => import(/* webpackChunkName: "table" */ '../views/Table.vue')

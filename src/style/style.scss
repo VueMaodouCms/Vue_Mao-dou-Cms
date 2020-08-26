@@ -1,6 +1,9 @@
 @import "variables";
 @import '_components';
-
+html,
+body{
+	font-family: 'Noto Sans TC', sans-serif;
+}
 @media (min-width: 576px) {
 	.container {
 		max-width: 540px;
