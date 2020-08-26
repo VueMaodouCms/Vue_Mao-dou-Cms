@@ -15,8 +15,7 @@
       slot(name="previous") ←
     .btn(:style="{ cursor: 'default' }", v-if="currentPage > 3") ...
     .btn(
-      v-for="(page, index) in numberOfPage"
-      :key="index"
+      v-for="page in Math.ceil(this.lists.length / this.numberPerPage)"
       :class="{ active: currentPage === page }"
       @click="selectPage(page)"
       v-if="Math.abs(currentPage - page) < 3"
@@ -24,7 +23,7 @@
       {{ page }}
     .btn(
       :style="{ cursor: 'default' }",
-      v-if="currentPage < numberOfPage.length - 2"
+      v-if="currentPage < Math.ceil(this.lists.length / this.numberPerPage) - 2"
     ) ...
     .btn(@click="next")
       slot(name="next") →
@@ -55,18 +54,6 @@ export default {
         (this.currentPage - 1) * this.numberPerPage,
         this.numberPerPage * this.currentPage
       )
-    },
-    // 計算出 1 ~ 最後一頁的數字陣列
-    numberOfPage () {
-      const result = []
-      for (
-        let i = 1;
-        i <= Math.ceil(this.lists.length / this.numberPerPage);
-        i++
-      ) {
-        result.push(i)
-      }
-      return result
     }
   },
   methods: {
