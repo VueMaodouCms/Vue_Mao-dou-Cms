@@ -68,7 +68,7 @@ export default {
             second: 80,
             third: 77,
             forth: 80,
-            fifth: 230
+            fifth: 370
           }
         }
       ]
