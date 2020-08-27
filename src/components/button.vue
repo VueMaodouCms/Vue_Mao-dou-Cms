@@ -1,24 +1,34 @@
 <template lang="pug">
-  #btn(ref="btn")
-    div Button
-      .ripple(@click="click" ref="ripple")
+  #btn(@mousedown="click" ref="btn" :style="{'position':'relative', 'background':'rgb(132, 162, 149)','--bgColor':this.bgColorVar}")
+    div(style="position:absolute; z-index:0;") Button
+      .ripple(ref="ripple")
 </template>
 
 <script>
 export default {
   data () {
     return {
-      show: false
+      show: false,
+      bgColorVar: 'rgb(96, 130, 123)'
     }
   },
   methods: {
     click () {
-      this.show = !this.show
       const btnBg = this.$refs.btn.style.background
-      if (btnBg === 'red') {
-        this.$refs.btn.style.background = 'blue'
+      // const rippleBg = this.$refs.ripple.style.background
+      console.log(btnBg)
+      if (btnBg === 'rgb(132, 162, 149)') {
+        // this.$refs.btn.style.background = 'rgb(96, 130, 123)'
+        setTimeout(() => {
+          this.$refs.btn.style.background = 'var(--bgColor)'
+          this.bgColorVar = 'rgb(132, 162, 149)'
+        }, 600)
       } else {
-        this.$refs.btn.style.background = 'red'
+        // this.$refs.btn.style.background = 'rgb(132, 162, 149)'
+        setTimeout(() => {
+          this.$refs.btn.style.background = 'var(--bgColor)'
+          this.bgColorVar = 'rgb(96, 130, 123)'
+        }, 600)
       }
     }
   }
@@ -64,7 +74,7 @@ export default {
   #btn{
     width: 160px;
     height: 50px;
-    background: red;
+    background: var(--bgColor);
     border-radius: 30px;
     text-align: center;
     line-height: 50px;
@@ -73,7 +83,8 @@ export default {
     color: white;
     letter-spacing: 2px;
     position: relative;
-    // overflow: hidden;
+    overflow: hidden;
+    user-select: none;
 
     &:hover{
       background: #B7CDC2;
@@ -95,18 +106,21 @@ export default {
         height: 100%;
         top: 0;
         left: 0;
-        background: radial-gradient(circle, #60827B 10%, transparent 10%);
+        background: radial-gradient(circle, var(--bgColor) 10%, transparent 10%);
         background-repeat: no-repeat;
         background-position: 50%;
         transform: scale(10, 10);
-        opacity: 0;
-        transition: transform .6s, opacity .7s;
+        // opacity: 0;
+        // transition: transform .6s, opacity .7s;
+        transition: transform .6s;
+        z-index: -1;
       }
 
       &:active::after {
         transform: scale(0, 0);
-        opacity: 1;
+        // opacity: 1;
         transition: 0s;
+        z-index: -1;
       }
     }
   }

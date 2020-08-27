@@ -4,10 +4,14 @@
       span table |
     router-link(to="/pagination")
       span pagination |
+    router-link(to="/darkpagination")
+      span darkPagination |
     router-link(to="/button")
       span button |
     router-link(to="/chart")
-      span chart
+      span chart |
+    router-link(to="/grid")
+      span grid
     router-view
 </template>
 

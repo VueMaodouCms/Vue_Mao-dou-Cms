@@ -16,6 +16,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "pagination" */ '../views/Pagination.vue')
   },
   {
+    path: '/darkpagination',
+    name: 'DarkPagination',
+    component: () => import(/* webpackChunkName: "dark-pagination" */ '../views/DarkPagination.vue')
+  },
+  {
     path: '/table',
     name: 'Table',
     component: () => import(/* webpackChunkName: "table" */ '../views/Table.vue')
@@ -29,6 +34,11 @@ const routes = [
     path: '/button',
     name: 'Button',
     component: () => import(/* webpackChunkName: "button" */ '../views/Button.vue')
+  },
+  {
+    path: '/grid',
+    name: 'Grid',
+    component: () => import(/* webpackChunkName: "grid" */ '../views/Grid.vue')
   }
 ]
 

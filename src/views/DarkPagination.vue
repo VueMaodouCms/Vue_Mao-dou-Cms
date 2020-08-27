@@ -1,5 +1,5 @@
 <template lang="pug">
-  m-pagination(:lists="boxs" :numberPerPage="10" scrollTop)
+  m-darkPagination(:lists="boxs" :numberPerPage="10" scrollTop)
     template(v-slot:pagelist="anythingyouwant")
       h1 {{ anythingyouwant }}
 </template>
