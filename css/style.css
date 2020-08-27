@@ -174,9 +174,21 @@
   color: white;
 }
 
+@media (max-width: 576px) {
+  .container {
+    max-width: 540px;
+  }
+  body {
+    font-size: 12px;
+  }
+}
+
 @media (min-width: 576px) {
   .container {
     max-width: 540px;
+  }
+  body {
+    font-size: 12px;
   }
 }
 
@@ -184,17 +196,26 @@
   .container {
     max-width: 720px;
   }
+  body {
+    font-size: 14px;
+  }
 }
 
 @media (min-width: 992px) {
   .container {
     max-width: 960px;
   }
+  body {
+    font-size: 16px;
+  }
 }
 
 @media (min-width: 1200px) {
   .container {
     max-width: 1140px;
+  }
+  body {
+    font-size: 18px;
   }
 }
 
@@ -3714,6 +3735,72 @@
   .mx-xl-auto {
     margin-left: auto !important;
   }
+}
+
+.bg-darkGreen {
+  background-color: #60827B !important;
+}
+
+a.bg-darkGreen:hover,
+a.bg-darkGreen:focus,
+button.bg-darkGreen:hover,
+button.bg-darkGreen:focus {
+  background-color: #60827B !important;
+}
+
+.bg-green {
+  background-color: #84A295 !important;
+}
+
+a.bg-green:hover,
+a.bg-green:focus,
+button.bg-green:hover,
+button.bg-green:focus {
+  background-color: #84A295 !important;
+}
+
+.bg-lightGreen {
+  background-color: #B7CDC2 !important;
+}
+
+a.bg-lightGreen:hover,
+a.bg-lightGreen:focus,
+button.bg-lightGreen:hover,
+button.bg-lightGreen:focus {
+  background-color: #B7CDC2 !important;
+}
+
+.bg-yellow {
+  background-color: #EFDB96 !important;
+}
+
+a.bg-yellow:hover,
+a.bg-yellow:focus,
+button.bg-yellow:hover,
+button.bg-yellow:focus {
+  background-color: #EFDB96 !important;
+}
+
+.bg-beige {
+  background-color: #EAE6DA !important;
+}
+
+a.bg-beige:hover,
+a.bg-beige:focus,
+button.bg-beige:hover,
+button.bg-beige:focus {
+  background-color: #EAE6DA !important;
+}
+
+.bg-creamyWhite {
+  background-color: #F7F6EE !important;
+}
+
+a.bg-creamyWhite:hover,
+a.bg-creamyWhite:focus,
+button.bg-creamyWhite:hover,
+button.bg-creamyWhite:focus {
+  background-color: #F7F6EE !important;
 }
 
 html,

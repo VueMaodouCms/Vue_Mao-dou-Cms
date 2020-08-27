@@ -1,25 +1,45 @@
+@media (max-width: 576px) {
+	.container {
+    max-width: 540px;
+  }
+  body{
+    font-size: 12px;
+  }
+}
 @media (min-width: 576px) {
 	.container {
-		max-width: 540px;
-	}
+    max-width: 540px;
+  }
+  body{
+    font-size: 12px;
+  }
 }
 
 @media (min-width: 768px) {
 	.container {
-			max-width: 720px;
-	}
+      max-width: 720px;
+  }
+  body{
+    font-size: 14px;
+  }
 }
 
 @media (min-width: 992px) {
 	.container {
-			max-width: 960px;
-	}
+      max-width: 960px;
+  }
+  body{
+    font-size: 16px;
+  }
 }
 
 @media (min-width: 1200px) {
 	.container {
-			max-width: 1140px;
-	}
+      max-width: 1140px;
+  }
+  body{
+    font-size: 18px;
+  }
 }
 
 .container,
