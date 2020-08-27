@@ -1,11 +1,15 @@
 <template lang="pug">
-  m-table(:data="boxs" :title="title" selectable modified)
+#aaa
+  m-table(:data="boxs" :title="title" selectable @getSelected='getSelected($event) ')
+  p {{selected}}
+
 </template>
 
 <script>
 export default {
   data () {
     return {
+      selected: [],
       boxs: [],
       title: [
         {
@@ -16,7 +20,7 @@ export default {
         {
           original: 'a',
           replace: 'aaaa',
-          sortable: false
+          sortable: true
         },
         {
           original: 'name',
@@ -24,6 +28,11 @@ export default {
           sortable: true
         }
       ]
+    }
+  },
+  methods: {
+    getSelected (event) {
+      this.selected = event
     }
   },
   mounted () {

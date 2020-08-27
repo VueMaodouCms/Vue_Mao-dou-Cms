@@ -17,7 +17,7 @@
         td.selectTd(v-if='selectable')
           input.selectIcon(type="checkbox" v-model='tr.select===undefined')
         td(v-for="(td,inx) in tableTh[1]" :key='inx' ) {{tr[td]}}
-  p {{selected}}
+  //- p {{selected}}
 </template>
 
 <script>
@@ -108,6 +108,7 @@ export default {
       } else {
         this.selectAllValue = false
       }
+      this.$emit('getSelected', this.selected)
     },
     selectAll () {
       if (this.selected.length !== this.tableData.length) {
@@ -131,6 +132,7 @@ export default {
           perData.select = false
         })
       }
+      this.$emit('getSelected', this.selected)
     },
     sort (index, tableTh, toggle) {
       const key = tableTh[1][index]
@@ -164,7 +166,6 @@ export default {
   .selectTd{
     width: 5%;
   }
-
   table{
     width: 100%;
     padding: 0;
