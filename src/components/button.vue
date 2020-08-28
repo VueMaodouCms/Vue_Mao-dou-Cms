@@ -2,7 +2,8 @@
 .container
   #btn(@click="click" ref="btn" :style="{'position':'relative', 'background':'rgb(132, 162, 149)','--bgColor':bgColorVar}")
     div(style="position:absolute; z-index:0;")
-      .ripple(ref="ripple" :style="{'--bgColor':this.rippleColor}") Button
+      .ripple(ref="ripple" :style="{'--bgColor':this.rippleColor}")
+        slot
 </template>
 
 <script>
