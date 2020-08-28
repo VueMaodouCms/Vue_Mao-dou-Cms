@@ -89,7 +89,7 @@ export default {
         options.ctx.fillStyle = 'white'
         options.ctx.font = 'bold 20px Arial'
         options.ctx.textAlign = 'center'
-        options.ctx.fillText(labelText + '%', labelX, labelY)
+        options.ctx.fillText(labelText + '%', labelX, labelY + 10)
 
         startAngle += sliceAngle
         colorIndex++
@@ -209,11 +209,12 @@ export default {
       const canvasActualHeight = options.canvas.height - options.padding * 2
       const canvasActualWidth = options.canvas.width - options.padding * 2
 
+      const scale = canvasActualHeight / maxValue
       // y 座標
       let gridYValue = 0
       while (gridYValue <= maxValue) {
-        const gridY =
-          canvasActualHeight - gridYValue + options.padding
+        const gridY = (maxValue > canvasActualHeight)
+          ? canvasActualHeight - gridYValue * scale + options.padding : canvasActualHeight - gridYValue + options.padding
         this.drawLine(
           options.ctx,
           options.padding,
@@ -245,13 +246,18 @@ export default {
       for (const i of options.data) {
         for (let j = 0; j < Object.keys(i.value).length; j++) {
           // 畫直線
-          options.ctx.beginPath()
-          options.ctx.moveTo(canvasActualWidth / valueField.length * (j + 1) - 10, canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j]])
-          options.ctx.lineTo(canvasActualWidth / valueField.length * (j + 2) - 10, canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j + 1]])
-          options.ctx.stroke()
+          this.drawLine(
+            options.ctx,
+            canvasActualWidth / valueField.length * (j + 1) - 10,
+            (maxValue > canvasActualHeight) ? canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j]] * scale : canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j]],
+            canvasActualWidth / valueField.length * (j + 2) - 10,
+            (maxValue > canvasActualHeight) ? canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j + 1]] * scale : canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j + 1]],
+            options.colors[options.data.indexOf(i)]
+          )
           // 畫圈圈
+          options.ctx.fillStyle = '#60827B'
           options.ctx.beginPath()
-          options.ctx.arc(canvasActualWidth / valueField.length * (j + 1) - 10, canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j]], 5, 0, Math.PI * 2)
+          options.ctx.arc(canvasActualWidth / valueField.length * (j + 1) - 10, (maxValue > canvasActualHeight) ? canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j]] * scale : canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j]], 5, 0, Math.PI * 2)
           options.ctx.fill()
         }
       }
@@ -263,6 +269,18 @@ export default {
       options.ctx.lineTo(options.padding + canvasActualWidth, options.padding + canvasActualHeight)
       options.ctx.closePath()
       options.ctx.stroke()
+
+      let lineIndex = 0
+      let legendHTML = ''
+      for (const categ of options.data) {
+        legendHTML +=
+          "<div><span style='display:inline-block;width:20px;background-color:" +
+          options.colors[lineIndex++] +
+          ";'>&nbsp;</span> " +
+          categ.name +
+          '</div>'
+      }
+      options.legend.innerHTML = legendHTML
     }
   },
   mounted () {
@@ -316,9 +334,9 @@ export default {
 
 <style lang="scss" scoped>
 .chart {
-  flex: 0 0 50%;
+  flex: 0 0 33%;
   display: flex;
-  justify-content: space-around;
-  align-items: flex-end;
+  justify-content: center;
+  align-items: center;
 }
 </style>

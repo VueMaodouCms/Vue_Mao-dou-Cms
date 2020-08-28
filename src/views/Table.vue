@@ -1,24 +1,44 @@
 <template lang="pug">
-  m-table(:data="boxs" :title="title")
+#container
+  m-table(:data="boxs"
+          :title="title"
+          selectable
+          editable
+          @Selected='getSelected($event)')
+    template(v-slot:thead)
+      h1 你要改的資料標題
+  p {{selected}}
+
 </template>
 
 <script>
 export default {
   data () {
     return {
+      selected: [],
       boxs: [],
       title: [
         {
-          original: 'name',
-          replace: '名字',
+          original: 'id',
+          replace: '編號',
           sortable: true
         },
         {
           original: 'a',
           replace: 'aaaa',
           sortable: true
+        },
+        {
+          original: 'name',
+          replace: '名字',
+          sortable: true
         }
       ]
+    }
+  },
+  methods: {
+    getSelected (event) {
+      this.selected = event
     }
   },
   mounted () {
@@ -26,8 +46,8 @@ export default {
       const rand = Math.random() > 0.5 ? 'male' : 'female'
       this.boxs.push({ name: i, id: Math.random(), gender: rand })
     }
-    this.boxs.push({ name: 6, id: Math.random(), a: 'asd', gender: 'no' })
-    this.boxs.push({ name: 7, id: Math.random(), b: 'asasdd' })
+    this.boxs.push({ id: Math.random(), a: 'asd', gender: 'no', name: 6 })
+    this.boxs.push({ id: Math.random(), b: 'asasdd', name: 7 })
   }
 }
 </script>
