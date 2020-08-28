@@ -11,7 +11,9 @@
     router-link(to="/chart")
       span chart |
     router-link(to="/grid")
-      span grid
+      span grid |
+    router-link(to="/avatar")
+      span avatar
     router-view
 </template>
 

@@ -39,6 +39,11 @@ const routes = [
     path: '/grid',
     name: 'Grid',
     component: () => import(/* webpackChunkName: "grid" */ '../views/Grid.vue')
+  },
+  {
+    path: '/avatar',
+    name: 'Avatar',
+    component: () => import(/* webpackChunkName: "avatar" */ '../views/Avatar.vue')
   }
 ]
 
