@@ -5,8 +5,8 @@
           selectable
           editable
           @Selected='getSelected($event)')
-    template(v-slot:thead="daa")
-      p {{daa}}
+    template(v-slot:thead)
+      h1 你要改的資料標題
   p {{selected}}
 
 </template>

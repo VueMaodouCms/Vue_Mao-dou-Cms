@@ -2,7 +2,8 @@
 #table
   table(border='1')
     thead
-      h1 Data
+      slot(name="thead")
+        h1 Data
     tbody
       th
         td.selectTd(v-if='selectable')
