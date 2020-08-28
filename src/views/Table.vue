@@ -1,10 +1,12 @@
 <template lang="pug">
-#aaa
+#container
   m-table(:data="boxs"
           :title="title"
           selectable
           editable
-          @getSelected='getSelected($event) ')
+          @Selected='getSelected($event)')
+    template(v-slot:thead="daa")
+      p {{daa}}
   p {{selected}}
 
 </template>

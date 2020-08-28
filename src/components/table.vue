@@ -16,16 +16,23 @@
       tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr,index)")
         td.selectTd(v-if='selectable')
           input.selectIcon(type="checkbox" v-model='tr.select===undefined')
-        td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)") {{tr[td]}}
+        td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)")
+          .td {{tr[td]}}
           input.inputIcon(v-if="index+','+inx===editJudge" v-model ='tr[td]')
+          input.ok(v-if="index+','+inx===editJudge" type='button' value='ok' @click="editOk(tr,td)")
+          input.cancel(v-if="index+','+inx===editJudge" type='button' value='cancel' @click="editCancel(tr,td)")
 
 </template>
 <script>
 export default {
   props: {
+    // 資料
     data: Array,
+    // 替換的title和是否排序
     title: Array,
+    // 可否被選擇
     selectable: Boolean,
+    // 可否被編輯
     editable: Boolean
   },
   data () {
@@ -36,10 +43,12 @@ export default {
       selected: [],
       selectAllValue: false,
       editJudge: null,
-      editValue: null
+      editValue: null,
+      editToggle: true
     }
   },
   computed: {
+    // 計算標題和替換後標題
     tableTh () {
       const tableThOriginal = []
       const tableThReplace = []
@@ -58,9 +67,9 @@ export default {
     }
   },
   methods: {
+    // 把資料排序打散重新照KEY順序排列，若可被選擇的話，每筆資料會在這裡加上select = false的屬性，用dataToggle在Mounted時=true之後改成false防止重複排序bug
     getTableData (tableThOriginal) {
       if (this.dataToggle) {
-        // ---替換title 加上sortable屬性
         this.dataToggle = false
         // ---重新排序JSON順序
         this.data.forEach(data => {
@@ -76,6 +85,7 @@ export default {
         })
       }
     },
+    // 判斷傳進來的Title是否被替換，和是否可以被排序
     replaceTitle (tableThReplace, tableThOriginal) {
       this.title.map(title => {
         for (let i = 0; i < tableThReplace.length; i++) {
@@ -93,14 +103,32 @@ export default {
         }
       })
     },
+    // 編輯資料
     edit (perData, key, index, inx) {
-      if (this.editable) {
+      console.log(this.editToggle)
+      if (this.editable && this.editToggle) {
         this.editJudge = index + ',' + inx
+        this.editValue = perData[key]
+        this.editToggle = false
       }
     },
-    exitEdit () {
+    // 編輯資料OK
+    editOk (perData, key) {
+      setTimeout(() => {
+        this.editToggle = true
+      }, 1)
       this.editJudge = null
+      this.editValue = null
     },
+    // 編輯資料取消
+    editCancel (perData, key) {
+      setTimeout(() => {
+        this.editToggle = true
+      }, 1)
+      this.editJudge = null
+      perData[key] = this.editValue
+    },
+    // 選擇一列資料並整理在selected傳回views
     select (perData) {
       if (this.selectable) {
         const find = this.selected.findIndex(select => {
@@ -118,9 +146,10 @@ export default {
         } else {
           this.selectAllValue = false
         }
-        this.$emit('getSelected', this.selected)
+        this.$emit('Selected', this.selected)
       }
     },
+    // 全選或全反選資料並整理在selected傳回views
     selectAll () {
       if (this.selectable) {
         if (this.selected.length !== this.tableData.length) {
@@ -144,9 +173,10 @@ export default {
             perData.select = false
           })
         }
-        this.$emit('getSelected', this.selected)
+        this.$emit('Selected', this.selected)
       }
     },
+    // 排序，為了讓文字和undefined也能排序，把排序時的現有tableData全部打散，拆開來排序後取代原先tableData，待優化寫法，目前想不出更好的，容易出BUG的部分
     sort (index, tableTh, toggle) {
       const key = tableTh[1][index]
       const array = []
@@ -168,7 +198,6 @@ export default {
   },
   mounted () {
     this.dataToggle = true
-    window.addEventListener('scroll', this.exitEdit)
   }
 }
 </script>
@@ -181,9 +210,14 @@ export default {
     width: 5%;
   }
   .inputIcon{
-    display: block;
-    margin-top: 0.5rem;
-    margin-bottom: 0.5rem;
+    width: 50%;
+    margin: 0.2rem;
+  }
+  .ok{
+    margin: 0.2rem;
+  }
+  .cancel{
+    margin: 0.2rem;
   }
   table{
     width: 100%;
