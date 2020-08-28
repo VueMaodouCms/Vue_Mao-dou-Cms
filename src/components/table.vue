@@ -13,21 +13,20 @@
             input.sortIcon(type="checkbox" v-model="th.sortToggle")
           .title(v-else)
             span {{th.title}}
-      tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr)")
+      tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr,index)")
         td.selectTd(v-if='selectable')
           input.selectIcon(type="checkbox" v-model='tr.select===undefined')
-        td(v-for="(td,inx) in tableTh[1]" :key='inx' ) {{tr[td]}}
-  //- p {{selected}}
+        td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)") {{tr[td]}}
+          input.inputIcon(v-if="index+','+inx===editJudge" v-model ='tr[td]')
+
 </template>
-
 <script>
-
 export default {
   props: {
     data: Array,
     title: Array,
     selectable: Boolean,
-    modified: Boolean
+    editable: Boolean
   },
   data () {
     return {
@@ -35,7 +34,9 @@ export default {
       dataToggle: false,
       tableData: [],
       selected: [],
-      selectAllValue: false
+      selectAllValue: false,
+      editJudge: null,
+      editValue: null
     }
   },
   computed: {
@@ -92,47 +93,59 @@ export default {
         }
       })
     },
+    edit (perData, key, index, inx) {
+      if (this.editable) {
+        this.editJudge = index + ',' + inx
+      }
+    },
+    exitEdit () {
+      this.editJudge = null
+    },
     select (perData) {
-      const find = this.selected.findIndex(select => {
-        return select === perData
-      })
-      if (find !== -1) {
-        perData.select = false
-        this.selected.splice(find, 1)
-      } else {
-        perData.select = undefined
-        this.selected.push(perData)
+      if (this.selectable) {
+        const find = this.selected.findIndex(select => {
+          return select === perData
+        })
+        if (find !== -1) {
+          perData.select = false
+          this.selected.splice(find, 1)
+        } else {
+          perData.select = undefined
+          this.selected.push(perData)
+        }
+        if (this.selected.length === this.tableData.length) {
+          this.selectAllValue = true
+        } else {
+          this.selectAllValue = false
+        }
+        this.$emit('getSelected', this.selected)
       }
-      if (this.selected.length === this.tableData.length) {
-        this.selectAllValue = true
-      } else {
-        this.selectAllValue = false
-      }
-      this.$emit('getSelected', this.selected)
     },
     selectAll () {
-      if (this.selected.length !== this.tableData.length) {
-        this.tableData.map(perData => {
-          const find = this.selected.findIndex(select => {
-            return select === perData
+      if (this.selectable) {
+        if (this.selected.length !== this.tableData.length) {
+          this.tableData.map(perData => {
+            const find = this.selected.findIndex(select => {
+              return select === perData
+            })
+            if (find !== -1) {
+              perData.select = false
+            } else {
+              perData.select = undefined
+              this.selected.push(perData)
+            }
           })
-          if (find !== -1) {
-            perData.select = false
-          } else {
+          this.tableData.forEach(perData => {
             perData.select = undefined
-            this.selected.push(perData)
-          }
-        })
-        this.tableData.forEach(perData => {
-          perData.select = undefined
-        })
-      } else {
-        this.selected = []
-        this.tableData.forEach(perData => {
-          perData.select = false
-        })
+          })
+        } else {
+          this.selected = []
+          this.tableData.forEach(perData => {
+            perData.select = false
+          })
+        }
+        this.$emit('getSelected', this.selected)
       }
-      this.$emit('getSelected', this.selected)
     },
     sort (index, tableTh, toggle) {
       const key = tableTh[1][index]
@@ -155,6 +168,7 @@ export default {
   },
   mounted () {
     this.dataToggle = true
+    window.addEventListener('scroll', this.exitEdit)
   }
 }
 </script>
@@ -165,6 +179,11 @@ export default {
   }
   .selectTd{
     width: 5%;
+  }
+  .inputIcon{
+    display: block;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
   }
   table{
     width: 100%;
