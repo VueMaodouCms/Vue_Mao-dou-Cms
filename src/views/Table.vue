@@ -2,11 +2,19 @@
 #container
   m-table(:data="boxs"
           :title="title"
+          :extra='extra'
           selectable
           editable
-          @Selected='getSelected($event)')
+          searchable
+          @Selected='getSelected($event)'
+          )
     template(v-slot:thead)
       h1 你要改的資料標題
+    template(v-slot:確認)
+      m-button
+    template(v-slot:確認-4)
+      h1 我在這裡
+    template(v-slot:b-1) 我就是只改這格
   p {{selected}}
 
 </template>
@@ -32,6 +40,12 @@ export default {
           original: 'name',
           replace: '名字',
           sortable: true
+        }
+      ],
+      extra: [
+        {
+          title: '確認',
+          index: 4
         }
       ]
     }
