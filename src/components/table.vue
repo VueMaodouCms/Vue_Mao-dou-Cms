@@ -4,6 +4,8 @@
     thead
       slot(name="thead")
         h1 Data
+      .search
+        input.searchIcon(v-if='searchable' v-model='searchValue' placeholder='點我開始篩選')
     tbody
       th
         td.selectTd(v-if='selectable')
@@ -18,11 +20,11 @@
         td.selectTd(v-if='selectable')
           input.selectIcon(type="checkbox" v-model='tr.select===undefined')
         td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)")
-          .td {{tr[td]}}
-          input.inputIcon(v-if="index+','+inx===editJudge" v-model ='tr[td]')
-          input.ok(v-if="index+','+inx===editJudge" type='button' value='ok' @click="editOk(tr,td)")
-          input.cancel(v-if="index+','+inx===editJudge" type='button' value='cancel' @click="editCancel(tr,td)")
-
+          slot(:name="td+'-'+index")
+            slot(:name='td')
+              .td {{tr[td]}}
+              input.inputIcon(v-if="index+','+inx===editJudge" v-model ='editValue')
+              input.ok(v-if="index+','+inx===editJudge" type='button' value='ok' @click="editOk(tr,td)")
 </template>
 <script>
 export default {
@@ -31,21 +33,27 @@ export default {
     data: Array,
     // 替換的title和是否排序
     title: Array,
+    // 額外資料
+    extra: Array,
     // 可否被選擇
     selectable: Boolean,
     // 可否被編輯
-    editable: Boolean
+    editable: Boolean,
+    // 可否搜尋
+    searchable: Boolean
   },
   data () {
     return {
       tableTitle: [],
       dataToggle: false,
       tableData: [],
+      searchData: [],
       selected: [],
       selectAllValue: false,
       editJudge: null,
       editValue: null,
-      editToggle: true
+      editToggle: true,
+      searchValue: ''
     }
   },
   computed: {
@@ -53,7 +61,7 @@ export default {
     tableTh () {
       const tableThOriginal = []
       const tableThReplace = []
-      for (const data of this.data) {
+      this.data.map(data => {
         var key = Object.keys(data)
         for (let i = 0; i < key.length; i++) {
           if (!tableThOriginal.includes(key[i])) {
@@ -61,7 +69,21 @@ export default {
             tableThReplace.push({ title: key[i] })
           }
         }
-      }
+      })
+      this.extra.map(data => {
+        if (data.title) {
+          if (data.index) {
+            tableThOriginal.splice(data.index, 0, data.title)
+            tableThReplace.splice(data.index, 0, { title: data.title })
+          } else if (data.index === 0) {
+            tableThOriginal.splice(data.index, 0, data.title)
+            tableThReplace.splice(data.index, 0, { title: data.title })
+          } else {
+            tableThOriginal.push(data.title)
+            tableThReplace.push({ title: data.title })
+          }
+        }
+      })
       this.getTableData(tableThOriginal)
       this.replaceTitle(tableThReplace, tableThOriginal)
       return [tableThReplace, tableThOriginal]
@@ -84,6 +106,7 @@ export default {
           }
           this.tableData.push(perData)
         })
+        this.searchData = this.tableData
       }
     },
     // 判斷傳進來的Title是否被替換，和是否可以被排序
@@ -106,28 +129,31 @@ export default {
     },
     // 編輯資料
     edit (perData, key, index, inx) {
-      console.log(this.editToggle)
+      window.removeEventListener('click', this.editCancel)
       if (this.editable && this.editToggle) {
         this.editJudge = index + ',' + inx
         this.editValue = perData[key]
-        this.editToggle = false
       }
+      setTimeout(() => {
+        window.addEventListener('click', this.editCancel)
+      }, 1)
     },
     // 編輯資料OK
     editOk (perData, key) {
-      setTimeout(() => {
-        this.editToggle = true
-      }, 1)
-      this.editJudge = null
-      this.editValue = null
-    },
-    // 編輯資料取消
-    editCancel (perData, key) {
-      setTimeout(() => {
-        this.editToggle = true
-      }, 1)
+      this.editToggle = false
       this.editJudge = null
       perData[key] = this.editValue
+      setTimeout(() => {
+        window.removeEventListener('click', this.editCancel)
+        this.editToggle = true
+      }, 1)
+    },
+    // 編輯資料取消
+    editCancel () {
+      window.removeEventListener('click', this.editCancel)
+      if (this.editToggle) {
+        this.editJudge = null
+      }
     },
     // 選擇一列資料並整理在selected傳回views
     select (perData) {
@@ -142,18 +168,20 @@ export default {
           perData.select = undefined
           this.selected.push(perData)
         }
-        if (this.selected.length === this.tableData.length) {
-          this.selectAllValue = true
-        } else {
-          this.selectAllValue = false
-        }
-        this.$emit('Selected', this.selected)
       }
     },
     // 全選或全反選資料並整理在selected傳回views
     selectAll () {
       if (this.selectable) {
-        if (this.selected.length !== this.tableData.length) {
+        if (this.selectAllValue) {
+          this.tableData.map(perData => {
+            const find = this.selected.findIndex(select => {
+              return select === perData
+            })
+            perData.select = false
+            this.selected.splice(find, 1)
+          })
+        } else {
           this.tableData.map(perData => {
             const find = this.selected.findIndex(select => {
               return select === perData
@@ -168,13 +196,7 @@ export default {
           this.tableData.forEach(perData => {
             perData.select = undefined
           })
-        } else {
-          this.selected = []
-          this.tableData.forEach(perData => {
-            perData.select = false
-          })
         }
-        this.$emit('Selected', this.selected)
       }
     },
     // 排序，為了讓文字和undefined也能排序，把排序時的現有tableData全部打散，拆開來排序後取代原先tableData，待優化寫法，目前想不出更好的，容易出BUG的部分
@@ -197,6 +219,35 @@ export default {
       this.tableData = NewSortData
     }
   },
+  watch: {
+    // 監聽搜尋事件
+    searchValue () {
+      const result = this.searchData.filter(data => {
+        const key = this.tableTh[1]
+        for (let i = 0; i < key.length; i++) {
+          if (data[key[i]] !== undefined) {
+            const StringValue = data[key[i]].toString()
+            if (StringValue.includes(this.searchValue)) {
+              return true
+            }
+          }
+        }
+      })
+      this.tableData = result
+    },
+    // 監聽選擇事件
+    selected () {
+      this.$emit('Selected', this.selected)
+      const result = this.tableData.filter(perData => {
+        return perData.select === undefined
+      })
+      if (result.length === this.tableData.length) {
+        this.selectAllValue = true
+      } else {
+        this.selectAllValue = false
+      }
+    }
+  },
   mounted () {
     this.dataToggle = true
   }
@@ -217,10 +268,17 @@ export default {
   .ok{
     margin: 0.2rem;
   }
-  .cancel{
-    margin: 0.2rem;
+  .search{
+    width: 100%;
+    text-align: center;
+    .searchIcon{
+    width: 80%;
+    margin: 1rem;
+    }
   }
+
   table{
+    transition: 0.3s;
     width: 100%;
     padding: 0;
     border: 0;
@@ -249,6 +307,13 @@ export default {
         td{
           width: 100%;
         }
+      }
+      tr:hover{
+        background: #84A295;
+        transition: 0.3s;
+        box-shadow: 1rem 1rem 1rem rgba(0,0,0,0.5) ;
+        margin-bottom: 0.5rem;
+        margin-right: 0.5rem;
       }
     }
   }
