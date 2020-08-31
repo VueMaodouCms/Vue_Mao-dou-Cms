@@ -16,17 +16,19 @@
             input.sortIcon(type="checkbox" v-model="th.sortToggle")
           .title(v-else)
             span {{th.title}}
-      tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr,index)")
+      tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr,index)"
+      :style="stripesStyle[index%2]")
         td.selectTd(v-if='selectable')
           input.selectIcon(type="checkbox" v-model='tr.select===undefined')
-        td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)")
-          slot(:name="td+'-'+index")
-            slot(:name='td')
-              .td {{tr[td]}}
-              input.inputIcon(v-if="index+','+inx===editJudge" v-model ='editValue')
-              input.ok(v-if="index+','+inx===editJudge" type='button' value='ok' @click="editOk(tr,td)")
+          td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)")
+            slot(:name="td+'-'+tr.index" :data='tr[td]')
+              slot(:name='td' :data='tr,td')
+                .td.a {{tr[td]}}
+                input.inputIcon(v-if="index+','+inx===editJudge" v-model ='editValue')
+                input.ok(v-if="index+','+inx===editJudge" type='button' value='ok' @click="editOk(tr,td)")
 </template>
 <script>
+
 export default {
   props: {
     // 資料
@@ -40,7 +42,9 @@ export default {
     // 可否被編輯
     editable: Boolean,
     // 可否搜尋
-    searchable: Boolean
+    searchable: Boolean,
+    // 條紋
+    stripes: Array
   },
   data () {
     return {
@@ -87,6 +91,16 @@ export default {
       this.getTableData(tableThOriginal)
       this.replaceTitle(tableThReplace, tableThOriginal)
       return [tableThReplace, tableThOriginal]
+    },
+    stripesStyle () {
+      return (this.stripes) ? [
+        {
+          background: this.stripes[0]
+        },
+        {
+          background: this.stripes[1]
+        }
+      ] : []
     }
   },
   methods: {
@@ -95,11 +109,14 @@ export default {
       if (this.dataToggle) {
         this.dataToggle = false
         // ---重新排序JSON順序
+        let j = 0
         this.data.forEach(data => {
           const perData = {}
+          j++
           for (let i = 0; i < tableThOriginal.length; i++) {
             perData[tableThOriginal[i]] = data[tableThOriginal[i]]
             // ---判斷是否可選擇，每筆資料多推一個select = false
+            perData.index = j
             if (this.selectable) {
               perData.select = false
             }
@@ -254,6 +271,7 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
 #table{
   .sortIcon{
     float: right
@@ -276,7 +294,6 @@ export default {
     margin: 1rem;
     }
   }
-
   table{
     transition: 0.3s;
     width: 100%;
@@ -309,11 +326,10 @@ export default {
         }
       }
       tr:hover{
-        background: #84A295;
-        transition: 0.3s;
-        box-shadow: 1rem 1rem 1rem rgba(0,0,0,0.5) ;
-        margin-bottom: 0.5rem;
-        margin-right: 0.5rem;
+        transform: translate(-0.5%,-5%);
+        background: #EFDB96 !important;
+        transition: 0.5s;
+        box-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.5) ;
       }
     }
   }
