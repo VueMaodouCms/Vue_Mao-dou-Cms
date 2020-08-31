@@ -1,7 +1,8 @@
 <template lang="pug">
-  #btn(@mousedown="click" ref="btn" :style="{'position':'relative', 'background':'rgb(132, 162, 149)','--bgColor':this.bgColorVar}")
-    div(style="position:absolute; z-index:0;") Button
-      .ripple(ref="ripple")
+.container
+  #btn(@click="click" ref="btn" :style="{'position':'relative', 'background':'rgb(132, 162, 149)','--bgColor':bgColorVar}")
+    div(style="position:absolute; z-index:0;")
+      .ripple(ref="ripple" :style="{'--bgColor':this.rippleColor}") Button
 </template>
 
 <script>
@@ -9,7 +10,8 @@ export default {
   data () {
     return {
       show: false,
-      bgColorVar: 'rgb(96, 130, 123)'
+      bgColorVar: 'rgb(96, 130, 123)',
+      rippleColor: 'rgb(132, 162, 149)'
     }
   },
   methods: {
@@ -17,14 +19,16 @@ export default {
       const btnBg = this.$refs.btn.style.background
       // const rippleBg = this.$refs.ripple.style.background
       console.log(btnBg)
-      if (btnBg === 'rgb(132, 162, 149)') {
+      if (this.bgColorVar === 'rgb(96, 130, 123)') {
         // this.$refs.btn.style.background = 'rgb(96, 130, 123)'
+        this.rippleColor = 'rgb(132, 162, 149)'
         setTimeout(() => {
           this.$refs.btn.style.background = 'var(--bgColor)'
           this.bgColorVar = 'rgb(132, 162, 149)'
         }, 600)
       } else {
         // this.$refs.btn.style.background = 'rgb(132, 162, 149)'
+        this.rippleColor = 'rgb(96, 130, 123)'
         setTimeout(() => {
           this.$refs.btn.style.background = 'var(--bgColor)'
           this.bgColorVar = 'rgb(96, 130, 123)'
