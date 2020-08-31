@@ -76,57 +76,57 @@ export default {
   //     background: transparent;
   //   }
   // }
-  #btn{
-    width: 160px;
-    height: 50px;
-    background: var(--bgColor);
-    border-radius: 30px;
-    text-align: center;
-    line-height: 50px;
-    font-size: 24px;
-    font-family: 'Noto Sans TC', sans-serif;
-    color: white;
-    letter-spacing: 2px;
-    position: relative;
-    overflow: hidden;
-    user-select: none;
+  // #btn{
+  //   width: 160px;
+  //   height: 50px;
+  //   background: var(--bgColor);
+  //   border-radius: 30px;
+  //   text-align: center;
+  //   line-height: 50px;
+  //   font-size: 24px;
+  //   font-family: 'Noto Sans TC', sans-serif;
+  //   color: white;
+  //   letter-spacing: 2px;
+  //   position: relative;
+  //   overflow: hidden;
+  //   user-select: none;
 
-    &:hover{
-      background: #B7CDC2;
-    }
+  //   &:hover{
+  //     background: #B7CDC2;
+  //   }
 
-    .ripple {
-      position: absolute;
-      top: 0;
-      left: 0;
-      overflow: hidden;
-      width: 160px;
-      height: 50px;
+  //   .ripple {
+  //     position: absolute;
+  //     top: 0;
+  //     left: 0;
+  //     overflow: hidden;
+  //     width: 160px;
+  //     height: 50px;
 
-      &::after {
-        content: "";
-        display: block;
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        background: radial-gradient(circle, var(--bgColor) 10%, transparent 10%);
-        background-repeat: no-repeat;
-        background-position: 50%;
-        transform: scale(10, 10);
-        // opacity: 0;
-        // transition: transform .6s, opacity .7s;
-        transition: transform .6s;
-        z-index: -1;
-      }
+  //     &::after {
+  //       content: "";
+  //       display: block;
+  //       position: absolute;
+  //       width: 100%;
+  //       height: 100%;
+  //       top: 0;
+  //       left: 0;
+  //       background: radial-gradient(circle, var(--bgColor) 10%, transparent 10%);
+  //       background-repeat: no-repeat;
+  //       background-position: 50%;
+  //       transform: scale(10, 10);
+  //       // opacity: 0;
+  //       // transition: transform .6s, opacity .7s;
+  //       transition: transform .6s;
+  //       z-index: -1;
+  //     }
 
-      &:active::after {
-        transform: scale(0, 0);
-        // opacity: 1;
-        transition: 0s;
-        z-index: -1;
-      }
-    }
-  }
+  //     &:active::after {
+  //       transform: scale(0, 0);
+  //       // opacity: 1;
+  //       transition: 0s;
+  //       z-index: -1;
+  //     }
+  //   }
+  // }
 </style>
