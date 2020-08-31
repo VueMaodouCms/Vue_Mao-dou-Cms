@@ -5,8 +5,9 @@ import store from './store'
 import pagination from './components/pagination.vue'
 import darkPagination from './components/darkPagination.vue'
 import table from './components/table.vue'
-import button from './components/button.vue'
+import button from './components/button-ori.vue'
 import chart from './components/chart.vue'
+import avatar from './components/avatar.vue'
 import '../css/style.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -21,6 +22,7 @@ Vue.component('m-darkPagination', darkPagination)
 Vue.component('m-table', table)
 Vue.component('m-button', button)
 Vue.component('m-chart', chart)
+Vue.component('m-avatar', avatar)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 new Vue({
