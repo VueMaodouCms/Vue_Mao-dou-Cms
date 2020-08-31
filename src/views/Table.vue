@@ -7,14 +7,18 @@
           selectable
           editable
           searchable
+          showIndex
           @Selected='getSelected($event)'
           )
     template(v-slot:thead)
       h1 你要改的資料標題
+    template(#index) 編
+    template(v-slot:name-4='{data}')
+      .mark {{data}}
     template(#確認)
       .test
         m-button
-    template(v-slot:id-4='{data}')
+    template(v-slot:id-7='{data}')
       .mark {{data}}
   p {{selected}}
 
@@ -59,17 +63,17 @@ export default {
   mounted () {
     for (let i = 1; i <= 5; i++) {
       const rand = Math.random() > 0.5 ? 'male' : 'female'
-      this.boxs.push({ name: i, id: Math.random(), gender: rand })
+      this.boxs.push({ name: 'Sam', id: Math.random(), gender: rand })
     }
-    this.boxs.push({ id: Math.random(), a: 'asd', gender: 'no', name: 6 })
-    this.boxs.push({ id: Math.random(), name: 7 })
+    this.boxs.push({ id: Math.random(), a: 'asd', gender: 'no', name: 'Jack' })
+    this.boxs.push({ id: Math.random(), name: 'Lucy' })
   }
 }
 </script>
 <style>
 .mark{
-  background: blue;
-  color:red
+  background: green;
+  color:white
 }
 
 </style>
