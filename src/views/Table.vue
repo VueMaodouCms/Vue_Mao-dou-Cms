@@ -3,18 +3,23 @@
   m-table(:data="boxs"
           :title="title"
           :extra='extra'
+          :stripes="['#84A295','#B7CDC2']"
           selectable
           editable
           searchable
+          showIndex
           @Selected='getSelected($event)'
           )
     template(v-slot:thead)
       h1 你要改的資料標題
-    template(v-slot:確認)
-      m-button
-    template(v-slot:確認-4)
-      h1 我在這裡
-    template(v-slot:b-1) 我就是只改這格
+    template(#index) 編
+    template(v-slot:name-4='{data}')
+      .mark {{data}}
+    template(#確認)
+      .test
+        m-button
+    template(v-slot:id-7='{data}')
+      .mark {{data}}
   p {{selected}}
 
 </template>
@@ -58,10 +63,17 @@ export default {
   mounted () {
     for (let i = 1; i <= 5; i++) {
       const rand = Math.random() > 0.5 ? 'male' : 'female'
-      this.boxs.push({ name: i, id: Math.random(), gender: rand })
+      this.boxs.push({ name: 'Sam', id: Math.random(), gender: rand })
     }
-    this.boxs.push({ id: Math.random(), a: 'asd', gender: 'no', name: 6 })
-    this.boxs.push({ id: Math.random(), b: 'asasdd', name: 7 })
+    this.boxs.push({ id: Math.random(), a: 'asd', gender: 'no', name: 'Jack' })
+    this.boxs.push({ id: Math.random(), name: 'Lucy' })
   }
 }
 </script>
+<style>
+.mark{
+  background: green;
+  color:white
+}
+
+</style>
