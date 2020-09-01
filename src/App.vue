@@ -19,7 +19,9 @@
     router-link(to="/row")
       span row |
     router-link(to="/col")
-      span col
+      span col|
+    router-link(to="/card")
+      span card
     router-view
 </template>
 

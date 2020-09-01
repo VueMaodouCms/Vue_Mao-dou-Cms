@@ -11,6 +11,9 @@ import avatar from './components/avatar.vue'
 import container from './components/container.vue'
 import col from './components/col.vue'
 import row from './components/row.vue'
+import card from './components/card/card-ori.vue'
+import cardFluid from './components/card/card-fluid.vue'
+import cardText from './components/card/card-text.vue'
 import '../css/style.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -29,6 +32,9 @@ Vue.component('m-avatar', avatar)
 Vue.component('m-container', container)
 Vue.component('m-row', row)
 Vue.component('m-col', col)
+Vue.component('m-card', card)
+Vue.component('m-cardFluis', cardFluid)
+Vue.component('m-cardText', cardText)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 new Vue({
