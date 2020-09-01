@@ -13,7 +13,9 @@
     router-link(to="/grid")
       span grid |
     router-link(to="/avatar")
-      span avatar
+      span avatar |
+    router-link(to="/card")
+      span card
     router-view
 </template>
 
