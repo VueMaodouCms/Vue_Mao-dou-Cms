@@ -8,6 +8,8 @@
         input.searchIcon(v-if='searchable' v-model='searchValue' placeholder='點我開始篩選')
     tbody
       th
+        td.index(v-if='showIndex' @click='indexSortThoggle = !indexSortThoggle,sort(-1,tableTh,indexSortThoggle)')
+          slot(name="index")
         td.selectTd(v-if='selectable')
           input.selectIcon(type="checkbox" @click="selectAll" v-model="selectAllValue")
         td(v-for="(th, index) in tableTh[0]" :key="index" )
@@ -16,17 +18,20 @@
             input.sortIcon(type="checkbox" v-model="th.sortToggle")
           .title(v-else)
             span {{th.title}}
-      tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr,index)")
+      tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr,index)"
+      :style="stripesStyle[index%2]")
+        td.index(v-if='showIndex') {{tr.index}}
         td.selectTd(v-if='selectable')
           input.selectIcon(type="checkbox" v-model='tr.select===undefined')
         td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)")
-          slot(:name="td+'-'+index")
-            slot(:name='td')
+          slot(:name="td+'-'+tr.index" :data='tr[td]')
+            slot(:name='td' :data='tr,td')
               .td {{tr[td]}}
-              input.inputIcon(v-if="index+','+inx===editJudge" v-model ='editValue')
+              input.inputIcon(v-if="index+','+inx===editJudge" v-model ='editValue' @keyup.enter="editOk(tr,td)")
               input.ok(v-if="index+','+inx===editJudge" type='button' value='ok' @click="editOk(tr,td)")
 </template>
 <script>
+
 export default {
   props: {
     // 資料
@@ -40,12 +45,17 @@ export default {
     // 可否被編輯
     editable: Boolean,
     // 可否搜尋
-    searchable: Boolean
+    searchable: Boolean,
+    // 條紋
+    stripes: Array,
+    // 顯示Index
+    showIndex: Boolean
   },
   data () {
     return {
       tableTitle: [],
       dataToggle: false,
+      indexSortThoggle: false,
       tableData: [],
       searchData: [],
       selected: [],
@@ -87,6 +97,16 @@ export default {
       this.getTableData(tableThOriginal)
       this.replaceTitle(tableThReplace, tableThOriginal)
       return [tableThReplace, tableThOriginal]
+    },
+    stripesStyle () {
+      return (this.stripes) ? [
+        {
+          background: this.stripes[0]
+        },
+        {
+          background: this.stripes[1]
+        }
+      ] : []
     }
   },
   methods: {
@@ -95,9 +115,12 @@ export default {
       if (this.dataToggle) {
         this.dataToggle = false
         // ---重新排序JSON順序
+        let j = 0
         this.data.forEach(data => {
           const perData = {}
+          j++
           for (let i = 0; i < tableThOriginal.length; i++) {
+            perData.index = j
             perData[tableThOriginal[i]] = data[tableThOriginal[i]]
             // ---判斷是否可選擇，每筆資料多推一個select = false
             if (this.selectable) {
@@ -201,7 +224,10 @@ export default {
     },
     // 排序，為了讓文字和undefined也能排序，把排序時的現有tableData全部打散，拆開來排序後取代原先tableData，待優化寫法，目前想不出更好的，容易出BUG的部分
     sort (index, tableTh, toggle) {
-      const key = tableTh[1][index]
+      let key = tableTh[1][index]
+      if (index === -1) {
+        key = 'index'
+      }
       const array = []
       const NewSortData = []
       this.tableData.forEach(data => {
@@ -217,6 +243,7 @@ export default {
         NewSortData.push(result)
       }
       this.tableData = NewSortData
+      this.searchData = NewSortData
     }
   },
   watch: {
@@ -226,8 +253,9 @@ export default {
         const key = this.tableTh[1]
         for (let i = 0; i < key.length; i++) {
           if (data[key[i]] !== undefined) {
-            const StringValue = data[key[i]].toString()
-            if (StringValue.includes(this.searchValue)) {
+            const searchValue = this.searchValue.toLowerCase()
+            const StringValue = data[key[i]].toString().toLowerCase()
+            if (StringValue.includes(searchValue)) {
               return true
             }
           }
@@ -254,12 +282,20 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
+
 #table{
   .sortIcon{
-    float: right
+    float: right;
   }
   .selectTd{
-    width: 5%;
+    width: 6rem;
+    text-align: center;
+    justify-content: center;
+  }
+  .index{
+    width: 10rem;
+    text-align: center;
+    justify-content: center;
   }
   .inputIcon{
     width: 50%;
@@ -276,7 +312,6 @@ export default {
     margin: 1rem;
     }
   }
-
   table{
     transition: 0.3s;
     width: 100%;
@@ -306,14 +341,20 @@ export default {
         justify-content: space-around;
         td{
           width: 100%;
+          display:flex;
+          justify-content:start;
+          align-items: center;
+          flex-wrap: wrap;;
+          .td{
+            width: 100%;
+          }
         }
       }
       tr:hover{
-        background: #84A295;
-        transition: 0.3s;
-        box-shadow: 1rem 1rem 1rem rgba(0,0,0,0.5) ;
-        margin-bottom: 0.5rem;
-        margin-right: 0.5rem;
+        transform: translate(-0.5%,-5%);
+        background: #EFDB96 !important;
+        transition: 0.5s;
+        box-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.5) ;
       }
     }
   }
