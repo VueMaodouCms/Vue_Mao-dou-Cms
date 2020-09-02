@@ -7,7 +7,7 @@
       .search
         input.searchIcon(v-if='searchable' v-model='searchValue' placeholder='點我開始篩選')
     tbody
-      th
+      th(:style="stripesStyle[0]")
         td.index(v-if='showIndex' @click='indexSortThoggle = !indexSortThoggle,sort(-1,tableTh,indexSortThoggle)')
           slot(name="index")
         td.selectTd(v-if='selectable')
@@ -327,6 +327,7 @@ export default {
       justify-content: space-around;
       padding: 0;
       th{
+        background: red;
         width: 100%;
         display: flex;
         justify-content: space-around;

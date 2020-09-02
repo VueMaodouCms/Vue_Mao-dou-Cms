@@ -1,13 +1,18 @@
 <template lang="pug">
 #show
-  m-card(:data='card'
-  )
+  m-card(:data='cardc' stereo :type=2 :width=500 :height=400 )
+
+  m-card(:data='cards' stereo :type=3 :width=500 :height=400
+    titleColor='white'
+    textColor='white')
+
+  m-card(:data='card')
     template(#text-0)
       p 只給我改第一個
   m-card(
     titleColor='gray'
     textColor='black'
-    backgroundColor="#"
+    backgroundColor="#a151d1"
   )
     template(#title)
       img(src='/images/moudou.jpg')
@@ -45,17 +50,56 @@ export default {
               title: '第五夜',
               text: '毛豆很膩。',
               img: '/images/moudou.jpg'
+            },
+            {
+              title: '第六夜',
+              text: '毛豆很膩。',
+              img: '/images/moudou.jpg'
+            },
+            {
+              title: '第七夜',
+              text: '毛豆很膩。',
+              img: '/images/moudou.jpg'
             }
-            // {
-            //   title: '第六夜',
-            //   text: '毛豆很膩。',
-            //   img: '/images/moudou.jpg'
-            // }
-            // {
-            //   title: '第七夜',
-            //   text: '毛豆很膩。',
-            //   img: '/images/moudou.jpg'
-            // }
+          ]
+        }
+      ],
+      cardc: [
+        {
+          title: '第一頁',
+          text: '毛豆很好吃，毛豆真的很好吃，所以來使用毛豆的卡片。',
+          img: '/images/moudou.jpg',
+          children: [
+            {
+              title: '第二夜',
+              text: '毛豆很好吃。',
+              img: '/images/moudou.jpg'
+            },
+            {
+              title: '第三夜',
+              text: '毛豆很膩。',
+              img: '/images/moudou.jpg'
+            },
+            {
+              title: '第四夜',
+              text: '毛豆很膩。',
+              img: '/images/moudou.jpg'
+            },
+            {
+              title: '第五夜',
+              text: '毛豆很膩。',
+              img: '/images/moudou.jpg'
+            },
+            {
+              title: '第六夜',
+              text: '毛豆很膩。',
+              img: '/images/moudou.jpg'
+            },
+            {
+              title: '第七夜',
+              text: '毛豆很膩。',
+              img: '/images/moudou.jpg'
+            }
           ]
         }
       ],

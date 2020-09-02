@@ -1,35 +1,37 @@
 <template lang="pug">
   #card
     .block(:style='blockStyle' v-for="(card,index) in sortedData" :key="index")
-      .card(:style="cardStyle"  @click='flip(card)')
+      .card(:class="'card-'+type" :style="cardStyle" @click='flip(card)')
         .surface(v-if='stereo' v-for="(child,inx) in card.children" :key='inx'  :style="child.surface")
-          .img
-            slot(:name="'childImg-'+inx")
-              slot(name="img")
-                img(:src="child.img")
-          .body
-            .title(:style="child.titleColor")
-              slot(:name="'childTitle-'+inx")
-                slot(name="title")
-                  h1 {{child.title}}
-            .text(:style="child.textColor")
-              slot(:name="'childText-'+inx")
-                slot(name='text')
-                  p {{child.text}}
+          .content(:class="'content-'+type")
+            .img(:class="'img-'+type")
+              slot(:name="'childImg-'+inx")
+                slot(name="img")
+                  img(:src="child.img")
+            .body(:class="'body-'+type")
+              .title(:class="'title-'+type" :style="child.titleColor")
+                slot(:name="'childTitle-'+inx")
+                  slot(name="title")
+                    h1 {{child.title}}
+              .text(:class="'text-'+type" :style="child.textColor")
+                slot(:name="'childText-'+inx")
+                  slot(name='text')
+                    p {{child.text}}
         .surface(:style="card.surface")
-          .img
-            slot(:name="'img-'+index")
-              slot(name="img")
-                img(:src="card.img")
-          .body
-            .title(:style="card.titleColor")
-              slot(:name="'title-'+index")
-                slot(name="title")
-                  h1 {{card.title}}
-            .text(:style="card.textColor")
-              slot(:name="'text-'+index")
-                slot(name='text')
-                  p {{card.text}}
+          .content(:class="'content-'+type")
+            .img(:class="'img-'+type")
+              slot(:name="'img-'+index")
+                slot(name="img")
+                  img(:src="card.img")
+            .body(:class="'body-'+type")
+              .title(:class="'title-'+type" :style="card.titleColor")
+                slot(:name="'title-'+index")
+                  slot(name="title")
+                    h1 {{card.title}}
+              .text(:class="'text-'+type" :style="card.textColor")
+                slot(:name="'text-'+index")
+                  slot(name='text')
+                    p {{card.text}}
 </template>
 <script>
 export default {
@@ -37,6 +39,7 @@ export default {
     titleColor: String,
     textColor: String,
     stereo: Boolean,
+    type: { type: Number, default: 1 },
     width: { type: Number, default: 400 },
     height: { type: Number, default: 500 },
     backgroundColor: { type: String, default: '#F7F6EE' },
@@ -75,12 +78,31 @@ export default {
           perData.children.forEach(child => {
             i++
             child.surface = { transform: `rotateY(${360 / (perData.children.length + 1) * (i)}deg) translateZ(${distnce}px)`, background: this.backgroundColor }
+            if (child.titleColor !== undefined) {
+              child.titleColor = { color: child.titleColor }
+            } else {
+              if (this.titleColor !== undefined) {
+                child.titleColor = { color: this.titleColor }
+              } else {
+                child.titleColor = { color: '#60827B' }
+              }
+            }
+            if (child.textColor !== undefined) {
+              child.textColor = { color: child.textColor }
+            } else {
+              if (this.textColor !== undefined) {
+                child.textColor = { color: this.textColor }
+              } else {
+                child.textColor = { color: '#60827B' }
+              }
+            }
           })
         }
         if (perData.titleColor !== undefined) {
           perData.titleColor = { color: perData.titleColor }
         } else {
           if (this.titleColor !== undefined) {
+            console.log('b')
             perData.titleColor = { color: this.titleColor }
           } else {
             perData.titleColor = { color: '#60827B' }
@@ -127,7 +149,6 @@ export default {
 }
 </script>
 <style lang="scss" scoped>
-
 .block{
   margin: 1rem;
   overflow: hidden;
@@ -139,28 +160,80 @@ export default {
   transition: 1s;
   position: relative;
   display: inline-block;
+  width: 400px;
+  height: 500px;
   transform-style: preserve-3d;
-
   .surface{
     width: 100%;
     height: 100%;
     position: absolute;
     overflow: hidden;
     border-radius: 2rem;
-    .img{
-      margin: 0;
-      width:100%;
-      height:50%;
-      overflow: hidden;
-      img{
+    .content-1{
+      height: 100%;
+      .img-1{
+        margin: 0;
         width:100%;
-        height:100%;
-        object-fit: cover;
-        transition: 1s;
+        height:50%;
+        overflow: hidden;
+        img{
+          width:100%;
+          height:100%;
+          object-fit: cover;
+          transition: 1s;
+        }
+      }
+      .body-1{
+        padding: 1.5rem;
       }
     }
-    .body{
-      padding: 1.5rem;
+    .content-2{
+      display: flex;
+      height: 100%;
+      .img-2{
+        overflow: hidden;
+        width: 50%;
+        height: 100%;
+        img{
+          width:100%;
+          height:100%;
+          object-fit: cover;
+          transition: 1s;
+        }
+      }
+      .body-2{
+        width: 50%;
+        .title-2{
+          padding-top:1rem;
+          padding-bottom: 1.5rem;
+        }
+        padding: 1.5rem;
+      }
+    }
+    .content-3{
+      display: flex;
+      height: 100%;
+      .img-3{
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        img{
+          width:100%;
+          height:100%;
+          object-fit: cover;
+          transition: 1s;
+        }
+      }
+      .body-3{
+        position: absolute;
+        width: 100%;
+        text-align: center;
+        bottom: 10%;
+        .title-3{
+          padding-bottom: 1.5rem;
+        }
+        padding: 1.5rem;
+      }
     }
   }
 }
