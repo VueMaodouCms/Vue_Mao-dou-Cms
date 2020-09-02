@@ -18,8 +18,8 @@ import '../css/style.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 // 根據 icon 的種類引用
-import { faAngleDoubleLeft, faAngleLeft, faAngleDoubleRight, faAngleRight } from '@fortawesome/free-solid-svg-icons'
-library.add(faAngleDoubleLeft, faAngleLeft, faAngleDoubleRight, faAngleRight)
+import { faAngleDoubleLeft, faAngleLeft, faAngleDoubleRight, faAngleRight, faSort } from '@fortawesome/free-solid-svg-icons'
+library.add(faAngleDoubleLeft, faAngleLeft, faAngleDoubleRight, faAngleRight, faSort)
 
 Vue.config.productionTip = false
 

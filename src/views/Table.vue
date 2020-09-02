@@ -3,11 +3,11 @@
   m-table(:data="boxs"
           :title="title"
           :extra='extra'
-          :stripes="['#84A295','#B7CDC2']"
+          :stripes="['#F7F6EE', '#EAE6DA']"
+          thColor="#60827B"
           selectable
           editable
           searchable
-          showIndex
           @Selected='getSelected($event)'
           )
     template(v-slot:thead)
@@ -15,9 +15,9 @@
     template(#index) 編
     template(v-slot:name-4='{data}')
       .mark {{data}}
-    template(#確認)
-      .test
-        m-button
+    //- template(#確認)
+    //-   .test
+    //-     m-button
     template(v-slot:id-7='{data}')
       .mark {{data}}
   p {{selected}}
