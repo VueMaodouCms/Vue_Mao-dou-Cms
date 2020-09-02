@@ -39,7 +39,7 @@ export default {
         { name: '娛樂', value: 2 },
         { name: '討債', value: 8 }
       ],
-      color: ['#60827B', '#84A295', '#B7CDC2', '#EFDB96', '#EAE6DA', '#F7F6EE'],
+      color: ['red', 'blue', 'green', 'black', '#EAE6DA', '#F7F6EE'],
       datas: [
         {
           name: '雞排',

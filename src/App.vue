@@ -14,6 +14,12 @@
       span grid |
     router-link(to="/avatar")
       span avatar |
+    router-link(to="/container")
+      span container |
+    router-link(to="/row")
+      span row |
+    router-link(to="/col")
+      span col|
     router-link(to="/card")
       span card
     router-view

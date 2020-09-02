@@ -41,6 +41,21 @@ const routes = [
     component: () => import(/* webpackChunkName: "grid" */ '../views/Grid.vue')
   },
   {
+    path: '/container',
+    name: 'Container',
+    component: () => import(/* webpackChunkName: "container" */ '../views/Container.vue')
+  },
+  {
+    path: '/row',
+    name: 'Row',
+    component: () => import(/* webpackChunkName: "row" */ '../views/Row.vue')
+  },
+  {
+    path: '/col',
+    name: 'Col',
+    component: () => import(/* webpackChunkName: "col" */ '../views/Col.vue')
+  },
+  {
     path: '/avatar',
     name: 'Avatar',
     component: () => import(/* webpackChunkName: "avatar" */ '../views/Avatar.vue')
