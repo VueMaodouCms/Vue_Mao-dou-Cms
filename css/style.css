@@ -260,7 +260,7 @@
   z-index: 99;
 }
 
-#card .container {
+/* #card .container {
   width: 1000px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -381,7 +381,7 @@
   height: 267px;
   border-radius: 40px;
   /* box-shadow: inset 0px -117px 13px 1px rgba(0, 0, 0, 0.28); */
-  overflow: hidden;
+  /* overflow: hidden;
   position: relative;
 }
 
@@ -412,7 +412,7 @@
 #card .text3 {
   /* display:table-cell; 
     vertical-align:bottom; */
-  position: absolute;
+  /* position: absolute;
   bottom: 0;
   padding: 15px 15px 25px 15px;
   text-align: justify;
@@ -442,7 +442,7 @@
   bottom: -40%;
   -webkit-transition: 0.7s;
   transition: 0.7s;
-}
+}  */ 
 
 #table .sortIcon {
   float: right;
