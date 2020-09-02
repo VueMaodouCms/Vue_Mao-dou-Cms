@@ -155,27 +155,29 @@ export default {
 
       // drawing the bars
       let barIndex = 0
-      const result = []
-      for (const i of options.data) {
-        result.push(i)
-      }
-      for (let i = 1; i < options.data.length; i++) {
-        result.splice(i * 2 - 1, 0, { name: '', value: 0 })
-      }
-      const barSize = (canvasActualWidth - options.padding) / result.length
-      for (const categ of result) {
+      const barSize = (canvasActualWidth - options.padding) / (options.data.length * 2)
+      for (const categ of options.data) {
         const barHeight = Math.round(
           (canvasActualHeight * categ.value) / maxValue
         )
         this.drawBar(
           options.ctx,
-          options.padding + barIndex * barSize + 10,
+          options.padding + (barIndex * 2) * barSize + 10,
           options.canvas.height - barHeight - options.padding,
           barSize,
           barHeight,
-          options.colors[barIndex % options.colors.length]
+          options.colors[barIndex]
         )
 
+        this.drawBar(
+          options.ctx,
+          options.padding + (barIndex + 1) * barSize,
+          options.canvas.height - barHeight - options.padding,
+          barSize,
+          barHeight,
+          'transparent'
+        )
+        console.log(options.colors[barIndex])
         barIndex++
       }
 
@@ -255,7 +257,7 @@ export default {
             options.colors[options.data.indexOf(i)]
           )
           // 畫圈圈
-          options.ctx.fillStyle = '#60827B'
+          options.ctx.fillStyle = options.colors[options.data.indexOf(i)]
           options.ctx.beginPath()
           options.ctx.arc(canvasActualWidth / valueField.length * (j + 1) - 10, (maxValue > canvasActualHeight) ? canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j]] * scale : canvasActualHeight + options.padding - i.value[Object.keys(i.value)[j]], 5, 0, Math.PI * 2)
           options.ctx.fill()

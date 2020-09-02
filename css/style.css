@@ -84,7 +84,6 @@
   width: auto;
   height: 30px;
   line-height: 30px;
-  font-size: 16px;
   color: white;
 }
 
@@ -128,7 +127,7 @@
           justify-content: center;
   margin: auto;
   background: #84A295 !important;
-  height: 30px;
+  height: 40px;
   border-radius: 30px;
   padding: 5px;
   width: -webkit-fit-content;
@@ -151,9 +150,89 @@
   background: transparent;
   padding: 10px;
   color: white;
-  width: 30px;
+  width: 33px;
   margin-left: 1%;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  position: relative;
+}
+
+#darkPagination .btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 100%;
+}
+
+#darkPagination .active {
+  background-color: #60827B !important;
+  color: white;
+  position: relative;
+  border-radius: 100%;
+}
+
+#darkPagination .active::before {
+  content: '';
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@-webkit-keyframes big {
+  from {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+  }
+  to {
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+  }
+}
+
+@keyframes big {
+  from {
+    width: 0px;
+    height: 0px;
+    opacity: 0;
+  }
+  to {
+    width: 300px;
+    height: 300px;
+    opacity: 1;
+  }
+}
+
+.show {
+  -webkit-animation: big 0.4s linear;
+          animation: big 0.4s linear;
+}
+
+.button {
+  width: 160px;
+  height: 50px;
+  background: #84A295;
+  border-radius: 30px;
+  text-align: center;
+  line-height: 50px;
+  font-size: 24px;
+  font-family: 'Noto Sans TC', sans-serif;
+  color: white;
+  letter-spacing: 2px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  overflow: hidden;
+  position: relative;
   cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -161,17 +240,217 @@
           user-select: none;
 }
 
-#darkPagination .btn:active {
-  border: 2px solid #60827B !important;
+.button:hover {
+  background-color: #B7CDC2;
 }
 
-#darkPagination .btn:hover {
-  background-color: rgba(0, 0, 0, 0.1);
+.button .pool {
+  position: absolute;
+  width: 0px;
+  height: 0px;
+  background-color: #60827B;
+  -webkit-transition: none;
+  transition: none;
+  border-radius: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
 }
 
-#darkPagination .active {
-  background-color: #60827B !important;
-  color: white;
+.button p {
+  z-index: 99;
+}
+
+#card .container {
+  width: 1000px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+#card .card {
+  width: 311px;
+  height: 267px;
+  left: 28px;
+  top: 316px;
+  background: #F7F6EE;
+  -webkit-box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
+          box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+}
+
+#card .img {
+  width: 55%;
+  height: 100%;
+  float: left;
+  border-radius: 40px 0 0 40px;
+  overflow: hidden;
+  background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg) no-repeat center/cover;
+}
+
+#card .text {
+  width: 45%;
+  height: 100%;
+  border-radius: 0 40px 40px 0;
+  font-family: 'Noto Sans TC', sans-serif;
+  color: #60827B;
+  float: right;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 15px 15px 15px 15px;
+  letter-spacing: 1.2px;
+}
+
+#card .text p {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Noto Sans TC', sans-serif;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#card .text span {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+#card .card2 {
+  width: 267px;
+  height: 311px;
+  left: 381px;
+  top: 49px;
+  background: #F7F6EE;
+  -webkit-box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
+          box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+#card .imgWrap {
+  width: 100%;
+  height: 55%;
+  float: top;
+  border-radius: 40px 40px 0 0;
+  overflow: hidden;
+}
+
+#card .img2 {
+  width: 100%;
+  height: 100%;
+  background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg) no-repeat center/cover;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+#card .img2:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#card .text2 {
+  width: 100%;
+  height: 45%;
+  border-radius: 0 40px 40px 0;
+  font-family: 'Noto Sans TC', sans-serif;
+  color: #60827B;
+  float: bottom;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 15px 15px 15px 15px;
+  text-align: justify;
+}
+
+#card .text2 p {
+  font-weight: bold;
+  font-family: 'Noto Sans TC', sans-serif;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#card .text2 span {
+  font-weight: 300;
+}
+
+#card .card3 {
+  width: 311px;
+  height: 267px;
+  border-radius: 40px;
+  /* box-shadow: inset 0px -117px 13px 1px rgba(0, 0, 0, 0.28); */
+  overflow: hidden;
+  position: relative;
+}
+
+#card .card3:hover .shadow {
+  opacity: 1;
+  bottom: 0;
+}
+
+#card .img3 {
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  overflow: hidden;
+  background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg) no-repeat center/cover;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.28);
+          box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.28);
+  position: relative;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+#card .img3:hover {
+  -webkit-transform: scale(1.1);
+          transform: scale(1.1);
+}
+
+#card .text3 {
+  /* display:table-cell; 
+    vertical-align:bottom; */
+  position: absolute;
+  bottom: 0;
+  padding: 15px 15px 25px 15px;
+  text-align: justify;
+  font-family: 'Noto Sans TC', sans-serif;
+  color: #ffffff;
+}
+
+#card .text3 p {
+  font-size: 24px;
+  font-weight: bold;
+  font-family: 'Noto Sans TC', sans-serif;
+  margin-top: 0px;
+  margin-bottom: 10px;
+}
+
+#card .text3 span {
+  font-size: 16px;
+  font-weight: 300;
+}
+
+#card .shadow {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 40%;
+  background: rgba(0, 0, 0, 0.3);
+  bottom: -40%;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
 }
 
 @media (max-width: 576px) {
@@ -179,7 +458,7 @@
     max-width: 540px;
   }
   body {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -188,7 +467,7 @@
     max-width: 540px;
   }
   body {
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -215,7 +494,7 @@
     max-width: 1140px;
   }
   body {
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
@@ -3809,3 +4088,4 @@ body {
   margin: auto;
   list-style: none;
 }
+/*# sourceMappingURL=style.css.map */

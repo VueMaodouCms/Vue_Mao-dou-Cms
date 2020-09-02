@@ -1,9 +1,17 @@
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-family: 'Noto Sans TC', 'Microsoft JhengHei', sans-serif;
+    box-sizing: border-box;
+}
+
 @media (max-width: 576px) {
 	.container {
     max-width: 540px;
   }
   body{
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 @media (min-width: 576px) {
@@ -11,7 +19,7 @@
     max-width: 540px;
   }
   body{
-    font-size: 12px;
+    font-size: 14px;
   }
 }
 
@@ -38,7 +46,7 @@
       max-width: 1140px;
   }
   body{
-    font-size: 18px;
+    font-size: 16px;
   }
 }
 
