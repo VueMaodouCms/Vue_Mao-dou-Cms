@@ -1,34 +1,35 @@
 <template lang="pug">
 #table
-  table(border='1')
-    thead
-      slot(name="thead")
-        h1 Data
-      .search
-        input.searchIcon(v-if='searchable' v-model='searchValue' placeholder='點我開始篩選')
-    tbody
-      th
-        td.index(v-if='showIndex' @click='indexSortThoggle = !indexSortThoggle,sort(-1,tableTh,indexSortThoggle)')
-          slot(name="index")
-        td.selectTd(v-if='selectable')
-          input.selectIcon(type="checkbox" @click="selectAll" v-model="selectAllValue")
-        td(v-for="(th, index) in tableTh[0]" :key="index" )
-          .title(v-if="th.sortable" @click='th.sortToggle = !th.sortToggle,sort(index,tableTh,th.sortToggle)')
-            span {{th.title}}
-            input.sortIcon(type="checkbox" v-model="th.sortToggle")
-          .title(v-else)
-            span {{th.title}}
-      tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr,index)"
-      :style="stripesStyle[index%2]")
-        td.index(v-if='showIndex') {{tr.index}}
-        td.selectTd(v-if='selectable')
-          input.selectIcon(type="checkbox" v-model='tr.select===undefined')
-        td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)")
-          slot(:name="td+'-'+tr.index" :data='tr[td]')
-            slot(:name='td' :data='tr,td')
-              .td {{tr[td]}}
-              input.inputIcon(v-if="index+','+inx===editJudge" v-model ='editValue' @keyup.enter="editOk(tr,td)")
-              input.ok(v-if="index+','+inx===editJudge" type='button' value='ok' @click="editOk(tr,td)")
+  div
+    table
+      thead
+        slot(name="thead")
+          h1 Data
+        .search
+          input.searchIcon(v-if='searchable' v-model='searchValue' placeholder='點我開始篩選')
+      tbody
+        th(:style="thStyle")
+          td.index(v-if='showIndex' @click='indexSortThoggle = !indexSortThoggle,sort(-1,tableTh,indexSortThoggle)')
+            slot(name="index")
+          td.selectTd(v-if='selectable')
+            input.selectIcon(type="checkbox" @click="selectAll" v-model="selectAllValue")
+          td(v-for="(th, index) in tableTh[0]" :key="index" )
+            .title(v-if="th.sortable" @click='th.sortToggle = !th.sortToggle,sort(index,tableTh,th.sortToggle)')
+              span {{th.title}}
+              font-awesome-icon.size(:icon="['fas', 'sort']")
+            .title(v-else)
+              span {{th.title}}
+        tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr,index)"
+        :style="stripesStyle[index%2]")
+          //- td.index(v-if='showIndex') {{tr.index}}
+          td.selectTd(v-if='selectable')
+            input.selectIcon(type="checkbox" v-model='tr.select===undefined')
+          td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)")
+            slot(:name="td+'-'+tr.index" :data='tr[td]')
+              slot(:name='td' :data='tr,td')
+                .td {{tr[td]}}
+                input.inputIcon(v-if="index+','+inx===editJudge" v-model ='editValue' @keyup.enter="editOk(tr,td)")
+                input.ok(v-if="index+','+inx===editJudge" type='button' value='ok' @click="editOk(tr,td)")
 </template>
 <script>
 
@@ -47,7 +48,9 @@ export default {
     // 可否搜尋
     searchable: Boolean,
     // 條紋
-    stripes: Array,
+    stripes: { type: Array, default: function () { return ['#F7F6EE', '#EAE6DA'] } },
+    // 條文th
+    thColor: { type: String, default: '#60827B' },
     // 顯示Index
     showIndex: Boolean
   },
@@ -107,6 +110,11 @@ export default {
           background: this.stripes[1]
         }
       ] : []
+    },
+    thStyle () {
+      return (this.thColor.length > 0) ? {
+        background: this.thColor
+      } : {}
     }
   },
   methods: {
@@ -283,80 +291,80 @@ export default {
 </script>
 <style lang="scss" scoped>
 
-#table{
-  .sortIcon{
-    float: right;
-  }
-  .selectTd{
-    width: 6rem;
-    text-align: center;
-    justify-content: center;
-  }
-  .index{
-    width: 10rem;
-    text-align: center;
-    justify-content: center;
-  }
-  .inputIcon{
-    width: 50%;
-    margin: 0.2rem;
-  }
-  .ok{
-    margin: 0.2rem;
-  }
-  .search{
-    width: 100%;
-    text-align: center;
-    .searchIcon{
-    width: 80%;
-    margin: 1rem;
-    }
-  }
-  table{
-    transition: 0.3s;
-    width: 100%;
-    padding: 0;
-    border: 0;
-    thead{
-      text-align: center;
-      font-size: 1.5rem;
-    }
-    tbody{
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-around;
-      padding: 0;
-      th{
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        padding: 0;
-        td{
-          width: 100%;
-        }
-      }
-      tr{
-        width: 100%;
-        display: flex;
-        justify-content: space-around;
-        td{
-          width: 100%;
-          display:flex;
-          justify-content:start;
-          align-items: center;
-          flex-wrap: wrap;;
-          .td{
-            width: 100%;
-          }
-        }
-      }
-      tr:hover{
-        transform: translate(-0.5%,-5%);
-        background: #EFDB96 !important;
-        transition: 0.5s;
-        box-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.5) ;
-      }
-    }
-  }
-}
+// #table{
+//   .sortIcon{
+//     float: right;
+//   }
+//   .selectTd{
+//     width: 6rem;
+//     text-align: center;
+//     justify-content: center;
+//   }
+//   .index{
+//     width: 10rem;
+//     text-align: center;
+//     justify-content: center;
+//   }
+//   .inputIcon{
+//     width: 50%;
+//     margin: 0.2rem;
+//   }
+//   .ok{
+//     margin: 0.2rem;
+//   }
+//   .search{
+//     width: 100%;
+//     text-align: center;
+//     .searchIcon{
+//     width: 80%;
+//     margin: 1rem;
+//     }
+//   }
+//   table{
+//     transition: 0.3s;
+//     width: 100%;
+//     padding: 0;
+//     border: 0;
+//     thead{
+//       text-align: center;
+//       font-size: 1.5rem;
+//     }
+//     tbody{
+//       display: flex;
+//       flex-wrap: wrap;
+//       justify-content: space-around;
+//       padding: 0;
+//       th{
+//         width: 100%;
+//         display: flex;
+//         justify-content: space-around;
+//         padding: 0;
+//         td{
+//           width: 100%;
+//         }
+//       }
+//       tr{
+//         width: 100%;
+//         display: flex;
+//         justify-content: space-around;
+//         td{
+//           width: 100%;
+//           display:flex;
+//           justify-content:start;
+//           align-items: center;
+//           flex-wrap: wrap;;
+//           .td{
+//             width: 100%;
+//           }
+//         }
+//       }
+//       tr:hover{
+//         transform: translate(-0.5%,-5%);
+//         background: #EFDB96 !important;
+//         transition: 0.5s;
+//         box-shadow: 0.5rem 0.5rem 0.5rem rgba(0,0,0,0.5) ;
+//       }
+//     }
+//   }
+// }
 </style>
