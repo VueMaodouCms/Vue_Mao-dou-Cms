@@ -1,6 +1,6 @@
 <template lang="pug">
-  #col
-  //- #col(:class="{'col-' + cols:true}")
+  //- #col
+  #col(:class="'col-' + cols")
     slot
 </template>
 
@@ -8,8 +8,7 @@
 export default {
   props: {
     cols: {
-      type: String,
-      default: 'auto'
+      default: 12
     }
   }
 }

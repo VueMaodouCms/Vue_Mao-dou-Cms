@@ -1,5 +1,5 @@
 <template lang="pug">
-#container
+#container.container
   m-table(:data="boxs"
           :title="title"
           :extra='extra'
