@@ -20,6 +20,7 @@
       h1 改了喔
     template(#text)
       h3 毛豆很難吃，毛豆真的很難吃，所以來使用毛豆的卡片。
+
 </template>
 <script>
 export default {
