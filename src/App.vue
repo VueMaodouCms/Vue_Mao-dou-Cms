@@ -2,6 +2,8 @@
   #app
     router-link(to="/table")
       span table |
+    router-link(to="/table2")
+      span table2 |
     router-link(to="/pagination")
       span pagination |
     router-link(to="/darkpagination")
