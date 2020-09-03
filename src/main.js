@@ -5,6 +5,7 @@ import store from './store'
 import pagination from './components/pagination.vue'
 import darkPagination from './components/darkPagination.vue'
 import table from './components/table.vue'
+import table2 from './components/table-2.vue'
 import button from './components/button-ori.vue'
 import chart from './components/chart.vue'
 import avatar from './components/avatar.vue'
@@ -27,6 +28,7 @@ Vue.config.productionTip = false
 Vue.component('m-pagination', pagination)
 Vue.component('m-darkPagination', darkPagination)
 Vue.component('m-table', table)
+Vue.component('m-table2', table2)
 Vue.component('m-button', button)
 Vue.component('m-chart', chart)
 Vue.component('m-avatar', avatar)
