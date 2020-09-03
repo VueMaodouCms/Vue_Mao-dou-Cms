@@ -1,5 +1,5 @@
 <template lang="pug">
-#container
+#container.container
   m-table2(:data="boxs"
           :title="title"
           :extra='extra'
@@ -11,7 +11,7 @@
           @Selected='getSelected($event)'
           )
     template(v-slot:thead)
-      h1 table2
+      h1 table2 樣式一
     template(#index) 編
     template(v-slot:name-4='{data}')
       .mark {{data}}
@@ -34,7 +34,7 @@
           @Selected='getSelected2($event)'
           )
     template(v-slot:thead)
-      h1 table2
+      h1 table2 樣式二
     template(#index) 編
     template(v-slot:name-4='{data}')
       .mark {{data}}
