@@ -5,15 +5,17 @@ import store from './store'
 import pagination from './components/pagination.vue'
 import darkPagination from './components/darkPagination.vue'
 import table from './components/table.vue'
+import table2 from './components/table-2.vue'
 import button from './components/button-ori.vue'
 import chart from './components/chart.vue'
 import avatar from './components/avatar.vue'
 import container from './components/container.vue'
 import col from './components/col.vue'
 import row from './components/row.vue'
-import card from './components/card/card-ori.vue'
-import cardFluid from './components/card/card-fluid.vue'
-import cardText from './components/card/card-text.vue'
+// import card from './components/card/card-ori.vue'
+// import cardFluid from './components/card/card-fluid.vue'
+// import cardText from './components/card/card-text.vue'
+import card from './components/card.vue'
 import '../css/style.css'
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
@@ -26,6 +28,7 @@ Vue.config.productionTip = false
 Vue.component('m-pagination', pagination)
 Vue.component('m-darkPagination', darkPagination)
 Vue.component('m-table', table)
+Vue.component('m-table2', table2)
 Vue.component('m-button', button)
 Vue.component('m-chart', chart)
 Vue.component('m-avatar', avatar)
@@ -33,8 +36,8 @@ Vue.component('m-container', container)
 Vue.component('m-row', row)
 Vue.component('m-col', col)
 Vue.component('m-card', card)
-Vue.component('m-cardFluis', cardFluid)
-Vue.component('m-cardText', cardText)
+// Vue.component('m-cardFluis', cardFluid)
+// Vue.component('m-cardText', cardText)
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 new Vue({

@@ -1,172 +1,305 @@
-#card{
-  .container{
-    width: 1000px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-
-  .card {
-    width: 311px;
-    height: 267px;
-    left: 28px;
-    top: 316px;
-    background: #F7F6EE;
-    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
-    border-radius: 40px;
-  }
-
-  .img{
-    width: 55%;
-    height: 100%;
-    float: left;
-    border-radius: 40px 0 0 40px;
-    overflow: hidden;
-    background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg)no-repeat center/cover;
-  }
-
-  .text{
-    width: 45%;
-    height: 100%;
-    border-radius: 0 40px 40px 0;
-    font-family: 'Noto Sans TC', sans-serif;
-    color: #60827B;
-    float: right;
-    box-sizing: border-box;
-    padding: 15px 15px 15px 15px;
-    letter-spacing: 1.2px;
-  }
-
-  .text p{
-    font-size: 24px;
-    font-weight: bold;
-    font-family: 'Noto Sans TC', sans-serif;
-    margin-top: 0px;
-    margin-bottom: 10px;
-  }
-
-  .text span{
-    font-size: 16px;
-    font-weight: 300;
-  }
-
-  .card2{
-    width: 267px;
-    height: 311px;
-    left: 381px;
-    top: 49px;
-    background: #F7F6EE;
-    box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
-    border-radius: 40px;
-    overflow: hidden;
-  }
-
-  .imgWrap{
-    width: 100%;
-    height: 55%;
-    float: top;
-    border-radius: 40px 40px 0 0;
-    overflow: hidden;
-  }
-
-  .img2{
-    width:100%;
-    height:100%;
-    background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg)no-repeat center/cover;
-    transition: 0.7s;
-
-    &:hover{
-      transform: scale(1.1);
-    }
-  }
-
-  .text2{
-    width: 100%;
-    height: 45%;
-    border-radius: 0 40px 40px 0;
-    font-family: 'Noto Sans TC', sans-serif;
-    color: #60827B;
-    float: bottom;
-    box-sizing: border-box;
-    padding: 15px 15px 15px 15px;
-    text-align: justify;
-  }
-
-  .text2 p{
-    font-weight: bold;
-    font-family: 'Noto Sans TC', sans-serif;
-    margin-top: 0px;
-    margin-bottom: 10px;
-  }
-
-  .text2 span{
-    // font-size: 16px;
-    font-weight: 300;
-  }
-
-  .card3{
-    width: 311px;
-    height: 267px;
-    // left: 27px;
-    // top: 627px;
-    border-radius: 40px;
-    /* box-shadow: inset 0px -117px 13px 1px rgba(0, 0, 0, 0.28); */
-    overflow: hidden;
-    position: relative;
-    &:hover .shadow{
-      opacity: 1;
-      bottom: 0;
-    }
-  }
-
-  .img3{
+.block{
+  margin: 1rem;
+  overflow: hidden;
+  border-radius: 2rem;
+  display: inline-block;
+  box-shadow: 1rem 1rem 1rem rgba(0,0,0,0.1);
+  transition: 0.3s;
+}
+.card{
+  transition: 0.3s;
+  position: relative;
+  display: inline-block;
+  width: 400px;
+  height: 500px;
+  transform-style: preserve-3d;
+  .surface{
     width: 100%;
     height: 100%;
-    border-radius: 40px;
-    overflow: hidden;
-    background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg)no-repeat center/cover;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.28);
-    position: relative;
-    transition: 0.7s;
-
-    &:hover{
-      transform: scale(1.1);
-    }
-  }
-
-  .text3{
-    // box-shadow: inset 0px -117px 13px 1px rgba(0, 0, 0, 0.28);
-    /* display:table-cell; 
-    vertical-align:bottom; */
     position: absolute;
-    bottom: 0;
-    padding: 15px 15px 25px 15px;
-    text-align: justify;
-    font-family: 'Noto Sans TC', sans-serif;
-    color: #ffffff;
-  }	
+    // overflow: hidden;
+    // border-radius: 2rem;
+    .content-1{
+      height: 100%;
+      .img-1{
+        margin: 0;
+        width:100%;
+        height:50%;
+        overflow: hidden;
+        img{
+          width:100%;
+          height:100%;
+          object-fit: cover;
+          transition: 1s;
+        }
+      }
+      .body-1{
+        padding: 1.5rem;
+        .title-1{
+          padding-bottom: 1rem;
+        }
+      }
+    }
+    .content-2{
+      display: flex;
+      height: 100%;
+      .img-2{
+        overflow: hidden;
+        width: 50%;
+        height: 100%;
+        img{
+          width:100%;
+          height:100%;
+          object-fit: cover;
+          transition: 1s;
+        }
+      }
+      .body-2{
+        width: 50%;
+        .title-2{
+          padding-top:1rem;
+          padding-bottom: 1rem;
+        }
+        padding: 5px 1rem;
+      }
+    }
+    .content-3{
+      display: flex;
+      height: 100%;
+      .img-3{
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        img{
+          width:100%;
+          height:100%;
+          object-fit: cover;
+          transition: 1s;
+        }
+      }
+      .body-3{
+        position: absolute;
+        width: 100%;
+        height: 50%;
+        text-align: center;
+        bottom: 0;
+        .title-3{
+          position: absolute;
+          left: 50%;
+          top: 30%;
+          transform: translate(-50%,-50%);
+        }
+        .text-3{
+          padding-bottom: 1.5rem;
+          // background:#ffa;
+          position: absolute;
+          width: 75%;
+          left: 50%;
+          // bottom: 0;
+          top:50%;
+          transform: translate(-50%,0%);
+        }
 
-  .text3 p{
-    font-size: 24px;
-    font-weight: bold;
-    font-family: 'Noto Sans TC', sans-serif;
-    margin-top: 0px;
-    margin-bottom: 10px;
-  }
-
-  .text3 span{
-    font-size: 16px;
-    font-weight: 300;
-  }
-
-  .shadow{
-    opacity: 0;
-    position: absolute;
-    width:100%;
-    height:40%;
-    background: rgba(0,0,0,0.3);
-    bottom:-40%;
-    transition: 0.7s;
+        padding: 1.5rem;
+      }
+    }
   }
 }
+.card:hover{
+  img{
+    transform: scale(1.3,1.3);
+  }
+}
+.body-3::before{
+  content: '';
+  width: 100%;
+  height: 0;
+  transition: 0.7s;
+  bottom: -70%;
+  position: absolute;
+  transform: translate(-50%,-50%);
+  background: rgba(0,0,0,1);
+  border-radius:0rem 0rem 2rem 2rem;
+  }
+.card-3:hover{
+  .body-3::before{
+  height: 120%;
+  bottom: -70%;
+  position: absolute;
+  background: rgba(0,0,0,0.2);
+  }
+}
+
+
+// #card{
+//   .container{
+//     width: 1000px;
+//     display: flex;
+//     justify-content: space-between;
+//     align-items: center;
+//   }
+
+//   .card {
+//     width: 311px;
+//     height: 267px;
+//     left: 28px;
+//     top: 316px;
+//     background: #F7F6EE;
+//     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
+//     border-radius: 40px;
+//   }
+
+//   .img{
+//     width: 55%;
+//     height: 100%;
+//     float: left;
+//     border-radius: 40px 0 0 40px;
+//     overflow: hidden;
+//     background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg)no-repeat center/cover;
+//   }
+
+//   .text{
+//     width: 45%;
+//     height: 100%;
+//     border-radius: 0 40px 40px 0;
+//     font-family: 'Noto Sans TC', sans-serif;
+//     color: #60827B;
+//     float: right;
+//     box-sizing: border-box;
+//     padding: 15px 15px 15px 15px;
+//     letter-spacing: 1.2px;
+//   }
+
+//   .text p{
+//     font-size: 24px;
+//     font-weight: bold;
+//     font-family: 'Noto Sans TC', sans-serif;
+//     margin-top: 0px;
+//     margin-bottom: 10px;
+//   }
+
+//   .text span{
+//     font-size: 16px;
+//     font-weight: 300;
+//   }
+
+//   .card2{
+//     width: 267px;
+//     height: 311px;
+//     left: 381px;
+//     top: 49px;
+//     background: #F7F6EE;
+//     box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
+//     border-radius: 40px;
+//     overflow: hidden;
+//   }
+
+//   .imgWrap{
+//     width: 100%;
+//     height: 55%;
+//     float: top;
+//     border-radius: 40px 40px 0 0;
+//     overflow: hidden;
+//   }
+
+//   .img2{
+//     width:100%;
+//     height:100%;
+//     background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg)no-repeat center/cover;
+//     transition: 0.7s;
+
+//     &:hover{
+//       transform: scale(1.1);
+//     }
+//   }
+
+//   .text2{
+//     width: 100%;
+//     height: 45%;
+//     border-radius: 0 40px 40px 0;
+//     font-family: 'Noto Sans TC', sans-serif;
+//     color: #60827B;
+//     float: bottom;
+//     box-sizing: border-box;
+//     padding: 15px 15px 15px 15px;
+//     text-align: justify;
+//   }
+
+//   .text2 p{
+//     font-weight: bold;
+//     font-family: 'Noto Sans TC', sans-serif;
+//     margin-top: 0px;
+//     margin-bottom: 10px;
+//   }
+
+//   .text2 span{
+//     // font-size: 16px;
+//     font-weight: 300;
+//   }
+
+//   .card3{
+//     width: 311px;
+//     height: 267px;
+//     // left: 27px;
+//     // top: 627px;
+//     border-radius: 40px;
+//     /* box-shadow: inset 0px -117px 13px 1px rgba(0, 0, 0, 0.28); */
+//     overflow: hidden;
+//     position: relative;
+//     &:hover .shadow{
+//       opacity: 1;
+//       bottom: 0;
+//     }
+//   }
+
+//   .img3{
+//     width: 100%;
+//     height: 100%;
+//     border-radius: 40px;
+//     overflow: hidden;
+//     background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg)no-repeat center/cover;
+//     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+//     box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.28);
+//     position: relative;
+//     transition: 0.7s;
+
+//     &:hover{
+//       transform: scale(1.1);
+//     }
+//   }
+
+//   .text3{
+//     // box-shadow: inset 0px -117px 13px 1px rgba(0, 0, 0, 0.28);
+//     /* display:table-cell; 
+//     vertical-align:bottom; */
+//     position: absolute;
+//     bottom: 0;
+//     padding: 15px 15px 25px 15px;
+//     text-align: justify;
+//     font-family: 'Noto Sans TC', sans-serif;
+//     color: #ffffff;
+//   }	
+
+//   .text3 p{
+//     font-size: 24px;
+//     font-weight: bold;
+//     font-family: 'Noto Sans TC', sans-serif;
+//     margin-top: 0px;
+//     margin-bottom: 10px;
+//   }
+
+//   .text3 span{
+//     font-size: 16px;
+//     font-weight: 300;
+//   }
+
+//   .shadow{
+//     opacity: 0;
+//     position: absolute;
+//     width:100%;
+//     height:40%;
+//     background: rgba(0,0,0,0.3);
+//     bottom:-40%;
+//     transition: 0.7s;
+//   }
+// }
