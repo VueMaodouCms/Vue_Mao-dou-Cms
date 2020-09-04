@@ -128,7 +128,7 @@ export default {
         if (card.children !== undefined) {
           const level = card.children.length + 1
           this.cardStyle = {
-            transform: `rotateX(-3.5deg) rotateY(${(360 / level) * card.page}deg)`,
+            transform: `rotateX(0deg) rotateY(${(360 / level) * card.page}deg)`,
             width: this.width + 'px',
             height: this.height + 'px'
           }
