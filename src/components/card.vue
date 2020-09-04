@@ -72,13 +72,13 @@ export default {
           const distnce = (this.width / 2) * Math.tan([90 * (perData.children.length + 1) - 180] / (perData.children.length + 1) * [Math.PI / 180])
           perData.page = 0
           perData.surface = {
-            transform: `rotateY(0deg) translateZ(${distnce + 300}px)`,
+            transform: `rotateY(0deg) translateZ(${distnce}px)`,
             background: this.backgroundColor
           }
           let i = 0
           perData.children.forEach(child => {
             i++
-            child.surface = { transform: `rotateY(${360 / (perData.children.length + 1) * (i)}deg) translateZ(${distnce + 300}px)`, background: this.backgroundColor }
+            child.surface = { transform: `rotateY(${360 / (perData.children.length + 1) * (i)}deg) translateZ(${distnce}px)`, background: this.backgroundColor }
             if (child.titleColor !== undefined) {
               child.titleColor = { color: child.titleColor }
             } else {
@@ -128,7 +128,7 @@ export default {
         if (card.children !== undefined) {
           const level = card.children.length + 1
           this.cardStyle = {
-            transform: `rotateX(-3.5deg) rotateY(${(360 / level) * card.page}deg)`,
+            transform: `rotateX(0deg) rotateY(${(360 / level) * card.page}deg)`,
             width: this.width + 'px',
             height: this.height + 'px'
           }

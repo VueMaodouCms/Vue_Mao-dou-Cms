@@ -4,10 +4,10 @@
   border-radius: 2rem;
   display: inline-block;
   box-shadow: 1rem 1rem 1rem rgba(0,0,0,0.1);
-  transition: 0.3s;
+  transition: 0.7s;
 }
 .card{
-  transition: 0.3s;
+  transition: 0.7s;
   position: relative;
   display: inline-block;
   width: 400px;
@@ -91,7 +91,6 @@
         }
         .text-3{
           padding-bottom: 1.5rem;
-          // background:#ffa;
           position: absolute;
           width: 75%;
           left: 50%;
@@ -99,7 +98,6 @@
           top:50%;
           transform: translate(-50%,0%);
         }
-
         padding: 1.5rem;
       }
     }
@@ -118,7 +116,7 @@
   bottom: -70%;
   position: absolute;
   transform: translate(-50%,-50%);
-  background: rgba(0,0,0,1);
+  background: linear-gradient(transparent,rgba(0, 0, 0, 0.5));
   border-radius:0rem 0rem 2rem 2rem;
   }
 .card-3:hover{
@@ -126,7 +124,10 @@
   height: 120%;
   bottom: -70%;
   position: absolute;
-  background: rgba(0,0,0,0.2);
+  background: linear-gradient( transparent, rgba(0, 0, 0, 0.5));
+  }
+  .body-3{
+    opacity: 1;
   }
 }
 
