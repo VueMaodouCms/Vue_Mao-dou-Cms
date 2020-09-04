@@ -1,5 +1,5 @@
 <template lang="pug">
-#table
+#table2
   div
     table
       thead
@@ -7,7 +7,7 @@
           h1 Data
         .search
           input.searchIcon(v-if='searchable' v-model='searchValue' placeholder='點我開始篩選')
-      tbody
+      tbody(:style="tbodyStyle")
         th(:style="thStyle")
           td.index(v-if='showIndex' @click='indexSortThoggle = !indexSortThoggle,sort(-1,tableTh,indexSortThoggle)')
             slot(name="index")
@@ -20,7 +20,7 @@
             .title(v-else)
               span {{th.title}}
         tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr,index)"
-        :style="stripesStyle[index%2]")
+        :style="trStyle")
           //- td.index(v-if='showIndex') {{tr.index}}
           td.selectTd(v-if='selectable')
             input.selectIcon(type="checkbox" v-model='tr.select===undefined')
@@ -48,9 +48,11 @@ export default {
     // 可否搜尋
     searchable: Boolean,
     // 條紋
-    stripes: { type: Array, default: function () { return ['#F7F6EE', '#EAE6DA'] } },
+    trColor: { type: String, default: function () { return ['#F7F6EE', '#EAE6DA'] } },
     // 條文th
     thColor: { type: String, default: '#60827B' },
+    // tbody顏色
+    backgroundColor: { type: String, default: '#B7CDC2' },
     // 顯示Index
     showIndex: Boolean
   },
@@ -101,19 +103,19 @@ export default {
       this.replaceTitle(tableThReplace, tableThOriginal)
       return [tableThReplace, tableThOriginal]
     },
-    stripesStyle () {
-      return (this.stripes) ? [
-        {
-          background: this.stripes[0]
-        },
-        {
-          background: this.stripes[1]
-        }
-      ] : []
+    trStyle () {
+      return (this.trColor.length > 0) ? {
+        background: this.trColor
+      } : {}
     },
     thStyle () {
       return (this.thColor.length > 0) ? {
         background: this.thColor
+      } : {}
+    },
+    tbodyStyle () {
+      return (this.backgroundColor.length > 0) ? {
+        background: this.backgroundColor
       } : {}
     }
   },

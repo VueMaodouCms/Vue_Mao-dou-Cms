@@ -26,6 +26,11 @@ const routes = [
     component: () => import(/* webpackChunkName: "table" */ '../views/Table.vue')
   },
   {
+    path: '/table2',
+    name: 'Table2',
+    component: () => import(/* webpackChunkName: "table2" */ '../views/Table2.vue')
+  },
+  {
     path: '/chart',
     name: 'Chart',
     component: () => import(/* webpackChunkName: "chart" */ '../views/Chart.vue')
@@ -41,9 +46,29 @@ const routes = [
     component: () => import(/* webpackChunkName: "grid" */ '../views/Grid.vue')
   },
   {
+    path: '/container',
+    name: 'Container',
+    component: () => import(/* webpackChunkName: "container" */ '../views/Container.vue')
+  },
+  {
+    path: '/row',
+    name: 'Row',
+    component: () => import(/* webpackChunkName: "row" */ '../views/Row.vue')
+  },
+  {
+    path: '/col',
+    name: 'Col',
+    component: () => import(/* webpackChunkName: "col" */ '../views/Col.vue')
+  },
+  {
     path: '/avatar',
     name: 'Avatar',
     component: () => import(/* webpackChunkName: "avatar" */ '../views/Avatar.vue')
+  },
+  {
+    path: '/card',
+    name: 'Card',
+    component: () => import(/* webpackChunkName: "card" */ '../views/Card.vue')
   }
 ]
 

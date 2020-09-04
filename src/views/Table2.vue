@@ -1,17 +1,17 @@
 <template lang="pug">
 #container.container
-  m-table(:data="boxs"
+  m-table2(:data="boxs"
           :title="title"
           :extra='extra'
-          :stripes="['#F7F6EE', '#EAE6DA']"
-          thColor="#60827B"
+          trColor="#ffffff"
+          thColor="#B7CDC2"
           selectable
           editable
           searchable
           @Selected='getSelected($event)'
           )
     template(v-slot:thead)
-      h1 你要改的資料標題
+      h1 table2 樣式一
     template(#index) 編
     template(v-slot:name-4='{data}')
       .mark {{data}}
@@ -21,6 +21,29 @@
     template(v-slot:id-7='{data}')
       .mark {{data}}
   p {{selected}}
+  br
+  m-table2(:data="boxs"
+          :title="title"
+          :extra='extra'
+          trColor="#ffffff"
+          thColor="#F7F6EE"
+          backgroundColor="#F7F6EE"
+          selectable
+          editable
+          searchable
+          @Selected='getSelected2($event)'
+          )
+    template(v-slot:thead)
+      h1 table2 樣式二
+    template(#index) 編
+    template(v-slot:name-4='{data}')
+      .mark {{data}}
+    //- template(#確認)
+    //-   .test
+    //-     m-button
+    template(v-slot:id-7='{data}')
+      .mark {{data}}
+  p {{selected2}}
 
 </template>
 
@@ -29,6 +52,7 @@ export default {
   data () {
     return {
       selected: [],
+      selected2: [],
       boxs: [],
       title: [
         {
@@ -58,6 +82,9 @@ export default {
   methods: {
     getSelected (event) {
       this.selected = event
+    },
+    getSelected2 (event) {
+      this.selected2 = event
     }
   },
   mounted () {
