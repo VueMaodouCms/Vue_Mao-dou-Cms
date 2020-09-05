@@ -35,7 +35,7 @@ export default {
     // 文字顏色
     textcolor: { type: String, default: 'black' },
     // 格線間距
-    gridScale: { type: Number, default: 200 },
+    gridScale: { type: Number, default: 50 },
     // 格線顏色
     gridColor: { type: String, default: 'rgba(0,0,0,0.1)' },
     // 坐標軸顏色
@@ -53,9 +53,9 @@ export default {
     return {
       defaultColor: [
         '#60827B',
-        '#84A295',
-        '#B7CDC2',
         '#EFDB96',
+        '#B7CDC2',
+        '#84A295',
         '#EAE6DA',
         '#F7F6EE'
       ]
@@ -112,7 +112,7 @@ export default {
     drawBarChart (options) {
       // 先計算出此資料最大數值為多少
       let maxValue = 0
-      if (this.stack) {
+      if (this.stack && !this.horizon) {
         for (const i of this.detail) {
           let stackValue = 0
           for (const j of i.value) {
@@ -201,8 +201,20 @@ export default {
                 barSize * (parseInt(j) + 1) +
                 (i * canvasActualHeight) / (this.feilds.length + 1) +
                 canvasActualHeight / (this.feilds.length + 1) / 2,
-              barHeight,
+              barHeight - barSize / 2,
               barSize,
+              this.detail[j].color ? this.detail[j].color : this.defaultColor[j]
+            )
+            this.drawPie(
+              options.ctx,
+              options.padding + barHeight - barSize / 2,
+              options.padding +
+                barSize * (parseInt(j) + 1) +
+                (i * canvasActualHeight) / (this.feilds.length + 1) +
+                canvasActualHeight / (this.feilds.length + 1) / 2 + barSize / 2,
+              barSize / 2,
+              0,
+              2 * Math.PI,
               this.detail[j].color ? this.detail[j].color : this.defaultColor[j]
             )
           }
@@ -515,7 +527,7 @@ export default {
             options.canvas.height -
               options.padding -
               (canvasActualHeight * this.detail[j].value[i]) / maxValue,
-            5,
+            8,
             0,
             2 * Math.PI,
             this.detail[j].color ? this.detail[j].color : this.defaultColor[j]

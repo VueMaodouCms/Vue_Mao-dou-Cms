@@ -1,8 +1,8 @@
 <template lang="pug">
 #show
   m-chart(chartName="pie", :detail="pie", label hollow)
-  m-chart(chartName="bar", :detail="bar", :feilds="feilds", label stack)
-  m-chart(chartName="line", :detail="bar", :feilds="feilds", label)
+  m-chart(chartName="bar", :detail="bar", :feilds="feilds", label stack horizon)
+  m-chart(chartName="line", :detail="line", :feilds="feilds", label)
 </template>
 <script>
 export default {
@@ -20,6 +20,20 @@ export default {
         {
           name: '餅乾',
           value: [200, 300, 100, 400, 200]
+        }
+      ],
+      line: [
+        {
+          name: '雞排',
+          value: [50, 200, 150, 300, 250]
+        },
+        {
+          name: '珍奶',
+          value: [400, 250, 300, 150, 200]
+        },
+        {
+          name: '餅乾',
+          value: [200, 300, 100, 400, 150]
         }
       ],
       pie: [
