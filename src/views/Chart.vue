@@ -1,68 +1,48 @@
 <template lang="pug">
 #show
-  //- m-chart(
-  //-   :width="400",
-  //-   :height="300",
-  //-   chartStyle="barchart",
-  //-   :detail="boxs",
-  //-   :colors="color",
-  //-   :gridScale="5"
-  //-   label
-  //- )
-  //- m-chart(
-  //-   :width="400",
-  //-   :height="300",
-  //-   chartStyle="piechart",
-  //-   :detail="boxs",
-  //-   :doughnutHoleSize="0.5",
-  //-   :colors="color",
-  //-   textcolor="white",
-  //-   label
-  //- )
-  //- m-chart(
-  //-   :width="400",
-  //-   :height="300",
-  //-   chartStyle="linechart",
-  //-   :detail="datas",
-  //-   :colors="color",
-  //-   label,
-  //-   :gridScale="50"
-  //- )
-  test(
-    :width="400",
-    :height="300",
-    chartName="bar",
-    :detail="asd",
-    :feilds="feilds"
-  )
-
+  m-chart(chartName="pie", :detail="pie", label hollow)
+  m-chart(chartName="bar", :detail="bar", :feilds="feilds", label stack)
+  m-chart(chartName="line", :detail="bar", :feilds="feilds", label)
 </template>
 <script>
-import test from '../components/test'
 export default {
-  components: {
-    test
-  },
   data () {
     return {
-      boxs: [
-        { name: '雞排', value: 10 },
-        { name: '飲料', value: 15 },
-        { name: '娛樂', value: 2 },
-        { name: '討債', value: 8 }
-      ],
-      color: ['red', 'blue', 'green', 'black', '#EAE6DA', '#F7F6EE'],
-      asd: [
+      bar: [
         {
           name: '雞排',
-          value: [50, 100, 150, 200, 250]
+          value: [50, 200, 150, 300, 250]
         },
         {
           name: '珍奶',
-          value: [500, 250, 200, 150, 100]
+          value: [400, 250, 300, 150, 200]
+        },
+        {
+          name: '餅乾',
+          value: [200, 300, 100, 400, 200]
         }
       ],
-      feilds: ['我', '是', '大', '帥', '哥']
+      pie: [
+        {
+          name: '雞排',
+          value: 50
+        },
+        {
+          name: '珍奶',
+          value: 150
+        },
+        {
+          name: '餅乾',
+          value: 100
+        }
+      ],
+      feilds: [
+        { label: '我跟', color: '#60827B' },
+        { label: '你講', color: '#84A295' },
+        { label: '我真', color: '#B7CDC2' },
+        { label: '的是', color: '#EFDB96' },
+        { label: '帥哥', color: '#EAE6DA' }
+      ]
     }
   }
 }
