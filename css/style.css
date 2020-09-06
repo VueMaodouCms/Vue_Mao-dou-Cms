@@ -260,189 +260,182 @@
   z-index: 99;
 }
 
-/* #card .container {
-  width: 1000px;
+.block {
+  margin: 1rem;
+  overflow: hidden;
+  border-radius: 2rem;
+  display: inline-block;
+  -webkit-box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
+          box-shadow: 1rem 1rem 1rem rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+}
+
+.card {
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  position: relative;
+  display: inline-block;
+  width: 400px;
+  height: 500px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+}
+
+.card .surface {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+}
+
+.card .surface .content-1 {
+  height: 100%;
+}
+
+.card .surface .content-1 .img-1 {
+  margin: 0;
+  width: 100%;
+  height: 50%;
+  overflow: hidden;
+}
+
+.card .surface .content-1 .img-1 img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: 1s;
+  transition: 1s;
+}
+
+.card .surface .content-1 .body-1 {
+  padding: 1.5rem;
+}
+
+.card .surface .content-1 .body-1 .title-1 {
+  padding-bottom: 1rem;
+}
+
+.card .surface .content-2 {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-#card .card {
-  width: 311px;
-  height: 267px;
-  left: 28px;
-  top: 316px;
-  background: #F7F6EE;
-  -webkit-box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
-          box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
-}
-
-#card .img {
-  width: 55%;
   height: 100%;
-  float: left;
-  border-radius: 40px 0 0 40px;
-  overflow: hidden;
-  background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg) no-repeat center/cover;
 }
 
-#card .text {
-  width: 45%;
+.card .surface .content-2 .img-2 {
+  overflow: hidden;
+  width: 50%;
   height: 100%;
-  border-radius: 0 40px 40px 0;
-  font-family: 'Noto Sans TC', sans-serif;
-  color: #60827B;
-  float: right;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 15px 15px 15px 15px;
-  letter-spacing: 1.2px;
 }
 
-#card .text p {
-  font-size: 24px;
-  font-weight: bold;
-  font-family: 'Noto Sans TC', sans-serif;
-  margin-top: 0px;
-  margin-bottom: 10px;
-}
-
-#card .text span {
-  font-size: 16px;
-  font-weight: 300;
-}
-
-#card .card2 {
-  width: 267px;
-  height: 311px;
-  left: 381px;
-  top: 49px;
-  background: #F7F6EE;
-  -webkit-box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
-          box-shadow: 6px 6px 15px rgba(0, 0, 0, 0.25);
-  border-radius: 40px;
-  overflow: hidden;
-}
-
-#card .imgWrap {
-  width: 100%;
-  height: 55%;
-  float: top;
-  border-radius: 40px 40px 0 0;
-  overflow: hidden;
-}
-
-#card .img2 {
+.card .surface .content-2 .img-2 img {
   width: 100%;
   height: 100%;
-  background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg) no-repeat center/cover;
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
-#card .img2:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+.card .surface .content-2 .body-2 {
+  width: 50%;
+  padding: 5px 1rem;
 }
 
-#card .text2 {
-  width: 100%;
-  height: 45%;
-  border-radius: 0 40px 40px 0;
-  font-family: 'Noto Sans TC', sans-serif;
-  color: #60827B;
-  float: bottom;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box;
-  padding: 15px 15px 15px 15px;
-  text-align: justify;
+.card .surface .content-2 .body-2 .title-2 {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 
-#card .text2 p {
-  font-weight: bold;
-  font-family: 'Noto Sans TC', sans-serif;
-  margin-top: 0px;
-  margin-bottom: 10px;
+.card .surface .content-3 {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
 }
 
-#card .text2 span {
-  font-weight: 300;
-}
-
-#card .card3 {
-  width: 311px;
-  height: 267px;
-  border-radius: 40px;
-  /* box-shadow: inset 0px -117px 13px 1px rgba(0, 0, 0, 0.28); */
-  /* overflow: hidden;
-  position: relative;
-}
-
-#card .card3:hover .shadow {
+.card .surface .content-3:hover .body-3 {
   opacity: 1;
-  bottom: 0;
+  height: 55%;
 }
 
-#card .img3 {
+.card .surface .content-3 .img-3 {
+  overflow: hidden;
   width: 100%;
   height: 100%;
-  border-radius: 40px;
-  overflow: hidden;
-  background: url(https://cdn.clm02.com/ezvivi.com/290681/290681_1.jpg) no-repeat center/cover;
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  -webkit-box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.28);
-          box-shadow: 0px 6px 6px 0px rgba(0, 0, 0, 0.28);
-  position: relative;
-  -webkit-transition: 0.7s;
-  transition: 0.7s;
 }
 
-#card .img3:hover {
-  -webkit-transform: scale(1.1);
-          transform: scale(1.1);
+.card .surface .content-3 .img-3 img {
+  width: 100%;
+  height: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -webkit-transition: 1s;
+  transition: 1s;
 }
 
-#card .text3 {
-  /* display:table-cell; 
-    vertical-align:bottom; */
-  /* position: absolute;
-  bottom: 0;
-  padding: 15px 15px 25px 15px;
-  text-align: justify;
-  font-family: 'Noto Sans TC', sans-serif;
-  color: #ffffff;
-}
-
-#card .text3 p {
-  font-size: 24px;
-  font-weight: bold;
-  font-family: 'Noto Sans TC', sans-serif;
-  margin-top: 0px;
-  margin-bottom: 10px;
-}
-
-#card .text3 span {
-  font-size: 16px;
-  font-weight: 300;
-}
-
-#card .shadow {
-  opacity: 0;
+.card .surface .content-3 .body-3 {
   position: absolute;
   width: 100%;
-  height: 40%;
-  background: rgba(0, 0, 0, 0.3);
-  bottom: -40%;
+  height: 0%;
+  text-align: center;
+  bottom: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.4s, height 0.6s;
+  transition: opacity 0.4s, height 0.6s;
+  padding: 1.5rem;
+}
+
+.card .surface .content-3 .body-3 .title-3 {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+.card .surface .content-3 .body-3 .text-3 {
+  padding-bottom: 1.5rem;
+  position: absolute;
+  width: 75%;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, 0%);
+          transform: translate(-50%, 0%);
+}
+
+.card:hover img {
+  -webkit-transform: scale(1.3, 1.3);
+          transform: scale(1.3, 1.3);
+}
+
+.body-3::before {
+  content: '';
+  width: 100%;
+  height: 0;
   -webkit-transition: 0.7s;
   transition: 0.7s;
-}  */ 
+  bottom: -70%;
+  position: absolute;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.6)));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+  border-radius: 0rem 0rem 2rem 2rem;
+}
+
+.card-3:hover .body-3::before {
+  height: 120%;
+  bottom: -70%;
+  position: absolute;
+  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.6)));
+  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
+}
+
+.card-3:hover .body-3 {
+  opacity: 1;
+}
 
 #table .sortIcon {
   float: right;
@@ -575,6 +568,146 @@
 }
 
 #table table tbody tr:hover {
+  -webkit-transform: translate(-0.2%, -1%);
+          transform: translate(-0.2%, -1%);
+  background: #EFDB96 !important;
+  -webkit-transition: 0.7s;
+  transition: 0.7s;
+  -webkit-box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+          box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
+}
+
+#table2 .sortIcon {
+  float: right;
+}
+
+#table2 .selectTd {
+  width: 30rem;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#table2 .index {
+  width: 10rem;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+#table2 .inputIcon {
+  width: 50%;
+  margin: 0.2rem;
+}
+
+#table2 .ok {
+  margin: 0.2rem;
+}
+
+#table2 .search {
+  width: 100%;
+  text-align: center;
+}
+
+#table2 .search .searchIcon {
+  width: 80%;
+  margin: 1rem;
+}
+
+#table2 table {
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+  width: 100%;
+  padding: 0;
+  border: 0;
+}
+
+#table2 table thead {
+  text-align: center;
+  font-size: 1.5rem;
+  border: 0;
+}
+
+#table2 table tbody {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  padding: 10px;
+  border: 0;
+  border-radius: 8px;
+  height: 100%;
+}
+
+#table2 table tbody th {
+  width: 100%;
+  height: 40px;
+  font-weight: 500;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 5px;
+  color: #60827B !important;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+#table2 table tbody th td {
+  width: 100%;
+  border: 0;
+  text-align: left;
+  padding-left: 10px;
+}
+
+#table2 table tbody th td .size {
+  font-size: 22px !important;
+  font-weight: 300 !important;
+  padding-left: 5px;
+  line-height: 60px !important;
+  padding-top: 5px;
+}
+
+#table2 table tbody tr {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border: 0;
+  padding: 8px;
+  margin: 0.3%;
+  border-radius: 4px;
+}
+
+#table2 table tbody tr td {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  border: 0;
+  padding-left: 10px;
+  color: #7B7C7C !important;
+}
+
+#table2 table tbody tr td .td {
+  width: 100%;
+}
+
+#table2 table tbody tr:hover {
   -webkit-transform: translate(-0.2%, -1%);
           transform: translate(-0.2%, -1%);
   background: #EFDB96 !important;
