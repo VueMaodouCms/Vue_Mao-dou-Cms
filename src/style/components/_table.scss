@@ -98,6 +98,26 @@
       }
     }
   }
+
+  @include md{
+    .selectTd{
+      width: 100%;
+      text-align: center;
+      justify-content: flex-end;
+      padding-right: 20px;
+    }
+    table{
+      tbody{
+        th{
+          display: none;
+        }
+        tr{
+          padding:10px 0;
+          flex-direction: column;
+        }
+      }
+    }
+  }
 }
 
 // table2 
@@ -206,4 +226,25 @@
       }
     }
   }
+  
+  @include md{
+    .selectTd{
+      width: 100%;
+      text-align: center;
+      justify-content: flex-end;
+      padding-right: 20px;
+    }
+    table{
+      tbody{
+        th{
+          display: none;
+        }
+        tr{
+          padding:10px 0;
+          flex-direction: column;
+        }
+      }
+    }
+  }
+
 }

@@ -1,5 +1,5 @@
 <template lang="pug">
-#container.container
+#container.container.bg-beige
   m-table2(:data="boxs"
           :title="title"
           :extra='extra'
@@ -8,10 +8,11 @@
           selectable
           editable
           searchable
+          isStripe
           @Selected='getSelected($event)'
           )
     template(v-slot:thead)
-      h1 table2 樣式一
+      h1 table 樣式一
     template(#index) 編
     template(v-slot:name-4='{data}')
       .mark {{data}}
@@ -25,16 +26,15 @@
   m-table2(:data="boxs"
           :title="title"
           :extra='extra'
-          trColor="#ffffff"
-          thColor="#F7F6EE"
-          backgroundColor="#F7F6EE"
+          :stripes="['#F7F6EE', '#EAE6DA']"
+          thColor="#60827B"
           selectable
           editable
           searchable
           @Selected='getSelected2($event)'
           )
     template(v-slot:thead)
-      h1 table2 樣式二
+      h1 table 樣式二
     template(#index) 編
     template(v-slot:name-4='{data}')
       .mark {{data}}
