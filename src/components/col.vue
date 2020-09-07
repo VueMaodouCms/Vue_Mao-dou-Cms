@@ -9,6 +9,18 @@ export default {
   props: {
     cols: {
       default: 12
+    },
+    sm: {
+      default: 12
+    },
+    md: {
+
+    },
+    lg: {
+
+    },
+    xl: {
+
     }
   }
 }

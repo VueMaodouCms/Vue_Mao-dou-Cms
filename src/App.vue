@@ -1,9 +1,7 @@
 <template lang="pug">
   #app
-    router-link(to="/table")
-      span table |
     router-link(to="/table2")
-      span table2 |
+      span table |
     router-link(to="/pagination")
       span pagination |
     router-link(to="/darkpagination")

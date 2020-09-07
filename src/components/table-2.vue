@@ -1,6 +1,6 @@
 <template lang="pug">
-#table2
-  div
+div
+  #table2(v-if="!isStripe")
     table
       thead
         slot(name="thead")
@@ -30,6 +30,36 @@
                 .td {{tr[td]}}
                 input.inputIcon(v-if="index+','+inx===editJudge" v-model ='editValue' @keyup.enter="editOk(tr,td)")
                 input.ok(v-if="index+','+inx===editJudge" type='button' value='ok' @click="editOk(tr,td)")
+  #table(v-else)
+    table
+      thead
+        slot(name="thead")
+          h1 Data
+        .search
+          input.searchIcon(v-if='searchable' v-model='searchValue' placeholder='點我開始篩選')
+      tbody
+        th(:style="thStyle")
+          td.index(v-if='showIndex' @click='indexSortThoggle = !indexSortThoggle,sort(-1,tableTh,indexSortThoggle)')
+            slot(name="index")
+          td.selectTd(v-if='selectable')
+            input.selectIcon(type="checkbox" @click="selectAll" v-model="selectAllValue")
+          td(v-for="(th, index) in tableTh[0]" :key="index" )
+            .title(v-if="th.sortable" @click='th.sortToggle = !th.sortToggle,sort(index,tableTh,th.sortToggle)')
+              span {{th.title}}
+              font-awesome-icon.size(:icon="['fas', 'sort']")
+            .title(v-else)
+              span {{th.title}}
+        tr(v-for="(tr, index) in tableData" :key="index" @click="select(tr,index)"
+        :style="stripesStyle[index%2]")
+          //- td.index(v-if='showIndex') {{tr.index}}
+          td.selectTd(v-if='selectable')
+            input.selectIcon(type="checkbox" v-model='tr.select===undefined')
+          td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)")
+            slot(:name="td+'-'+tr.index" :data='tr[td]')
+              slot(:name='td' :data='tr,td')
+                .td {{tr[td]}}
+                input.inputIcon(v-if="index+','+inx===editJudge" v-model ='editValue' @keyup.enter="editOk(tr,td)")
+                input.ok(v-if="index+','+inx===editJudge" type='button' value='ok' @click="editOk(tr,td)")
 </template>
 <script>
 
@@ -48,13 +78,17 @@ export default {
     // 可否搜尋
     searchable: Boolean,
     // 條紋
-    trColor: { type: String, default: function () { return ['#F7F6EE', '#EAE6DA'] } },
+    trColor: { type: String, default: function () { return '#ffffff' } },
     // 條文th
     thColor: { type: String, default: '#60827B' },
     // tbody顏色
     backgroundColor: { type: String, default: '#B7CDC2' },
     // 顯示Index
-    showIndex: Boolean
+    showIndex: Boolean,
+    // 版本2
+    isStripe: { typeL: Boolean, default: true },
+    // 條紋
+    stripes: { type: Array, default: function () { return ['#F7F6EE', '#EAE6DA'] } }
   },
   data () {
     return {
@@ -117,6 +151,16 @@ export default {
       return (this.backgroundColor.length > 0) ? {
         background: this.backgroundColor
       } : {}
+    },
+    stripesStyle () {
+      return (this.stripes) ? [
+        {
+          background: this.stripes[0]
+        },
+        {
+          background: this.stripes[1]
+        }
+      ] : []
     }
   },
   methods: {
