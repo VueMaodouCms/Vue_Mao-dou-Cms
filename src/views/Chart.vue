@@ -1,76 +1,61 @@
 <template lang="pug">
 #show
-  m-chart(
-    :width="400",
-    :height="300",
-    chartStyle="barchart",
-    :detail="boxs",
-    :colors="color",
-    :gridScale="5"
-    label
-  )
-  m-chart(
-    :width="400",
-    :height="300",
-    chartStyle="piechart",
-    :detail="boxs",
-    :doughnutHoleSize="0.5",
-    :colors="color",
-    textcolor="white",
-    label
-  )
-  m-chart(
-    :width="400",
-    :height="300",
-    chartStyle="linechart",
-    :detail="datas",
-    :colors="color",
-    label,
-    :gridScale="50"
-  )
+  m-chart(chartName="pie", :detail="pie", label hollow)
+  m-chart(chartName="bar", :detail="bar", :feilds="feilds", label stack horizon)
+  m-chart(chartName="line", :detail="line", :feilds="feilds", label)
 </template>
 <script>
 export default {
   data () {
     return {
-      boxs: [
-        { name: '雞排', value: 10 },
-        { name: '飲料', value: 15 },
-        { name: '娛樂', value: 2 },
-        { name: '討債', value: 8 }
-      ],
-      color: ['red', 'blue', 'green', 'black', '#EAE6DA', '#F7F6EE'],
-      datas: [
+      bar: [
         {
           name: '雞排',
-          value: {
-            first: 50,
-            second: 150,
-            third: 170,
-            forth: 150,
-            fifth: 50
-          }
+          value: [50, 200, 150, 300, 250]
         },
         {
-          name: '飲料',
-          value: {
-            first: 100,
-            second: 120,
-            third: 200,
-            forth: 180,
-            fifth: 200
-          }
+          name: '珍奶',
+          value: [400, 250, 300, 150, 200]
         },
         {
-          name: '娛樂',
-          value: {
-            first: 30,
-            second: 80,
-            third: 77,
-            forth: 80,
-            fifth: 370
-          }
+          name: '餅乾',
+          value: [200, 300, 100, 400, 200]
         }
+      ],
+      line: [
+        {
+          name: '雞排',
+          value: [50, 200, 150, 300, 250]
+        },
+        {
+          name: '珍奶',
+          value: [400, 250, 300, 150, 200]
+        },
+        {
+          name: '餅乾',
+          value: [200, 300, 100, 400, 150]
+        }
+      ],
+      pie: [
+        {
+          name: '雞排',
+          value: 50
+        },
+        {
+          name: '珍奶',
+          value: 150
+        },
+        {
+          name: '餅乾',
+          value: 100
+        }
+      ],
+      feilds: [
+        { label: '我跟', color: '#60827B' },
+        { label: '你講', color: '#84A295' },
+        { label: '我真', color: '#B7CDC2' },
+        { label: '的是', color: '#EFDB96' },
+        { label: '帥哥', color: '#EAE6DA' }
       ]
     }
   }

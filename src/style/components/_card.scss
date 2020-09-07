@@ -4,10 +4,10 @@
   border-radius: 2rem;
   display: inline-block;
   box-shadow: 1rem 1rem 1rem rgba(0,0,0,0.1);
-  transition: 0.3s;
+  transition: 0.7s;
 }
 .card{
-  transition: 0.3s;
+  transition: 0.7s;
   position: relative;
   display: inline-block;
   width: 400px;
@@ -99,7 +99,6 @@
         }
         .text-3{
           padding-bottom: 1.5rem;
-          // background:#ffa;
           position: absolute;
           width: 75%;
           left: 50%;
@@ -107,7 +106,6 @@
           top:50%;
           transform: translate(-50%,0%);
         }
-
         padding: 1.5rem;
       }
     }
@@ -136,6 +134,9 @@
   position: absolute;
   background: linear-gradient(transparent, rgba(0,0,0,0.6));
 
+  }
+  .body-3{
+    opacity: 1;
   }
 }
 
