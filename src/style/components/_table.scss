@@ -81,9 +81,6 @@
           border: 0;
           padding-left: 10px;
           color: $darkGreen;
-          .td{
-            width: 100%;
-          }
         }
       }
       tr:last-child{
@@ -209,9 +206,6 @@
           border: 0;
           padding-left: 10px;
           color: $gray;
-          .td{
-            width: 100%;
-          }
         }
       }
       // tr:last-child{
@@ -242,6 +236,18 @@
         tr{
           padding:10px 0;
           flex-direction: column;
+          td{
+            flex-wrap: nowrap;
+            &::before{
+              content: attr(asd);
+              flex: 1 0 50%;
+              text-align: center;
+            }
+            div{
+              flex: 1 0 50%;
+              text-align: center;
+            }
+          }
         }
       }
     }

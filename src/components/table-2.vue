@@ -24,7 +24,7 @@ div
           //- td.index(v-if='showIndex') {{tr.index}}
           td.selectTd(v-if='selectable')
             input.selectIcon(type="checkbox" v-model='tr.select===undefined')
-          td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)")
+          td(v-for="(td,inx) in tableTh[1]" :key='inx' @click="edit(tr,td,index,inx)" :asd="tableTh[0][inx].title")
             slot(:name="td+'-'+tr.index" :data='tr[td]')
               slot(:name='td' :data='tr,td')
                 .td {{tr[td]}}
