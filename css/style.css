@@ -754,7 +754,7 @@
         flex-wrap: nowrap;
   }
   #table2 table tbody tr td::before {
-    content: attr(asd);
+    content: attr(thLabel);
     -webkit-box-flex: 1;
         -ms-flex: 1 0 50%;
             flex: 1 0 50%;
@@ -4412,3 +4412,4 @@ body {
   margin: auto;
   list-style: none;
 }
+/*# sourceMappingURL=style.css.map */

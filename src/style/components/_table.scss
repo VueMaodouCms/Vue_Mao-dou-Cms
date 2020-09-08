@@ -239,7 +239,7 @@
           td{
             flex-wrap: nowrap;
             &::before{
-              content: attr(asd);
+              content: attr(thLabel);
               flex: 1 0 50%;
               text-align: center;
             }
