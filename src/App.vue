@@ -24,6 +24,8 @@
         span col
       router-link(to="/card")
         span card
+      router-link(to="/form")
+        span form
     font-awesome-icon.icon(:icon="['fas', 'times']" v-if="active" color="white" @click.stop="active = false")
     font-awesome-icon.icon(:icon="['fas', 'list']" v-else color="white" @click.stop="active = true")
   div(:class="{left:active}")
