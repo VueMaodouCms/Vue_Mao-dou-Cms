@@ -98,9 +98,5 @@ export default {
 }
 </script>
 <style>
-.mark{
-  background: green;
-  color:white
-}
 
 </style>

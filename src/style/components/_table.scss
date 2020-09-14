@@ -220,13 +220,25 @@
       }
     }
   }
+  .mark{
+    background: green;
+    color:white;
+  }
   
+
   @include md{
+    .mark{
+      display: block !important;
+    }
     .selectTd{
       width: 100%;
-      text-align: center;
-      justify-content: flex-end;
-      padding-right: 20px;
+      // text-align: center;
+      // justify-content: flex-end;
+      padding-right: 3%;
+      position: absolute;
+    }
+    .inputIcon{
+
     }
     table{
       tbody{
@@ -236,8 +248,11 @@
         tr{
           padding:10px 0;
           flex-direction: column;
+          position: relative;
+          margin: 5px 0;
           td{
-            flex-wrap: nowrap;
+            flex-wrap: wrap;
+            justify-content: flex-end;
             &::before{
               content: attr(thLabel);
               flex: 1 0 50%;

@@ -420,8 +420,6 @@
   position: absolute;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.6)));
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
   border-radius: 0rem 0rem 2rem 2rem;
 }
 
@@ -431,10 +429,6 @@
   position: absolute;
   background: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.6)));
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.6));
-}
-
-.card-3:hover .body-3 {
-  opacity: 1;
 }
 
 #table .sortIcon {
@@ -730,14 +724,19 @@
           box-shadow: 0.2rem 0.2rem 0.2rem rgba(0, 0, 0, 0.15);
 }
 
+#table2 .mark {
+  background: green;
+  color: white;
+}
+
 @media (max-width: 992px) {
+  #table2 .mark {
+    display: block !important;
+  }
   #table2 .selectTd {
     width: 100%;
-    text-align: center;
-    -webkit-box-pack: end;
-        -ms-flex-pack: end;
-            justify-content: flex-end;
-    padding-right: 20px;
+    padding-right: 3%;
+    position: absolute;
   }
   #table2 table tbody th {
     display: none;
@@ -748,10 +747,15 @@
     -webkit-box-direction: normal;
         -ms-flex-direction: column;
             flex-direction: column;
+    position: relative;
+    margin: 5px 0;
   }
   #table2 table tbody tr td {
-    -ms-flex-wrap: nowrap;
-        flex-wrap: nowrap;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: end;
+        -ms-flex-pack: end;
+            justify-content: flex-end;
   }
   #table2 table tbody tr td::before {
     content: attr(thLabel);
