@@ -13,6 +13,7 @@ import container from './components/container.vue'
 import col from './components/col.vue'
 import row from './components/row.vue'
 import checkbox from './components/checkbox.vue'
+import radioButton from './components/radioButton.vue'
 // import card from './components/card/card-ori.vue'
 // import cardFluid from './components/card/card-fluid.vue'
 // import cardText from './components/card/card-text.vue'
@@ -38,6 +39,7 @@ Vue.component('m-row', row)
 Vue.component('m-col', col)
 Vue.component('m-card', card)
 Vue.component('m-checkbox', checkbox)
+Vue.component('m-radioBtn', radioButton)
 // Vue.component('m-cardFluis', cardFluid)
 // Vue.component('m-cardText', cardText)
 Vue.component('font-awesome-icon', FontAwesomeIcon)

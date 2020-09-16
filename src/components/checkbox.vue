@@ -1,14 +1,15 @@
 <template lang="pug">
-  #checkbox
-    input(type="checkbox" mouseover="hover")
+  div
+    #checkbox(v-if="!circle")
+      input(type="checkbox")
+    #checkbox-circle(v-else)
+      input(type="checkbox")
 </template>
 
 <script>
 export default {
-  methods: {
-    hover () {
-
-    }
+  props: {
+    circle: { type: Boolean, default: false }
   }
 }
 </script>
