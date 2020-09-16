@@ -52,6 +52,9 @@
         color: white;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
+        .smalltitle{
+          display: none;
+        }
         td{
           width: 100%;
           border: 0;
@@ -95,22 +98,47 @@
       }
     }
   }
-
   @include md{
+    .mark{
+      display: block !important;
+    }
     .selectTd{
       width: 100%;
-      text-align: center;
-      justify-content: flex-end;
-      padding-right: 20px;
+      // text-align: center;
+      // justify-content: flex-end;
+      padding-right: 3%;
+      position: absolute;
     }
     table{
       tbody{
         th{
-          display: none;
+          // display: none;
+          td{
+            display: none;
+          }
+          .smalltitle{
+            display: block;
+            text-align: center;
+          }
         }
         tr{
           padding:10px 0;
           flex-direction: column;
+          position: relative;
+          margin: 5px 0;
+          td{
+            flex-wrap: wrap;
+            justify-content: flex-end;
+            &::before{
+              content: attr(thLabel2);
+              flex: 1 0 50%;
+              text-align: center;
+            }
+            div{
+              flex: 1 0 50%;
+              text-align: center;
+            }
+          }
         }
       }
     }
@@ -175,6 +203,9 @@
         color: $darkGreen;
         border-top-left-radius: 8px;
         border-top-right-radius: 8px;
+        .smalltitle{
+          display: none;
+        }
         td{
           width: 100%;
           border: 0;
@@ -237,13 +268,17 @@
       padding-right: 3%;
       position: absolute;
     }
-    .inputIcon{
-
-    }
     table{
       tbody{
         th{
-          display: none;
+          // display: none;
+          td{
+            display: none;
+          }
+          .smalltitle{
+            display: block;
+            text-align: center;
+          }
         }
         tr{
           padding:10px 0;
