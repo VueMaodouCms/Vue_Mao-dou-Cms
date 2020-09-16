@@ -1,0 +1,56 @@
+
+input[type=radio] {
+  cursor: pointer;
+  font-size: 14px;
+  width: 14px;
+  height: 12px;
+  position: relative;
+}
+
+input[type=radio]::after {
+  content: " ";
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  top: -2px;
+  left:-1px;
+  border-radius: 8px;
+  background-color: #eee;
+  border:1px solid #777;
+  color: #fff;
+  display: inline-block;
+  visibility: visible;
+  padding: 0px 3px;
+}
+
+input[type=radio]:hover::after {
+  content: " ";
+  position: absolute;
+  width: 8px;
+  height: 14px;
+  top: -2px;
+  left:-1px;
+  border-radius: 8px;
+  background-color: #eee;
+  border:1px solid #777;
+  box-shadow:2px 2px 2px rgba(96, 130, 123,0.4);
+  color: #fff;
+  display: inline-block;
+  visibility: visible;
+  padding: 0px 3px;
+}
+
+  // 原點
+  input[type=radio]:checked::before {
+  content: "";
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 3px;
+  background-color: $darkGreen;
+  top: 3px;
+  left: 4px;
+  z-index: 99;
+  display: inline-block;
+  visibility: visible;
+  }

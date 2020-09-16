@@ -90,7 +90,7 @@ export default {
     // 顯示Index
     showIndex: Boolean,
     // 版本2
-    isStripe: { typeL: Boolean, default: true },
+    isStripe: { type: Boolean, default: true },
     // 條紋
     stripes: { type: Array, default: function () { return ['#F7F6EE', '#EAE6DA'] } }
   },
